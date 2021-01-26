@@ -63,4 +63,4 @@ client.on("message", async message => {
 
 // gets token from token.txt file and logs in with it.
 const token = fs.readFileSync("../token.txt").toString()
-client.login(process.env.BOT_TOKEN)
+client.login(token)
