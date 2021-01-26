@@ -1,4 +1,4 @@
-const config = require("config.json")
+const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs")
 
