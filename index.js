@@ -79,5 +79,5 @@ client.on("message", async message => {
 
 
 // gets token from token.txt file and logs in with it.
-const token = fs.readFileSync("../token.txt").toString()
+const token = fs.readFileSync("./token.txt").toString()
 client.login(token)
