@@ -58,6 +58,7 @@ client.on("message", async message => {
         .setImage('attachment://guide.png')
         .setTimestamp()
 
+      
 
       if(!username) return message.reply("You need to say your minecraft username.")
       const linkedAccount = await getLinkedDiscord(username)
