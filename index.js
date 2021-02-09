@@ -1,4 +1,4 @@
-const config = require("../config.json")
+const config = require("./config.json")
 const fetch = require("node-fetch")
 const fs = require("fs")
 
@@ -141,5 +141,5 @@ client.on("message", async message => {
 
 
 // gets token from token.txt file and logs in with it.
-const token = fs.readFileSync(__dirname+"/../token.txt").toString()
+const token = fs.readFileSync(__dirname+"/./token.txt").toString()
 client.login(token)
