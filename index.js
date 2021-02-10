@@ -117,7 +117,7 @@ client.on("message", async message => {
         isInGuild = true
       }else if(guildID){
         // This will run if the user is not in the guild, but is in any guild.
-        message.member.roles.remove(config.memberRole);
+        
       }
       message.member.setNickname(username).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
