@@ -101,7 +101,7 @@ client.on("message", async message => {
       if(guildID){
         // Checks if it is in any guild
         guildName = guild.name;
-        embed_guildName.addField('Guild found', guildName, true)
+        embed_guildName.setTitle('Guild found: ' + guildName)
         message.channel.send(embed_guildName)
         message.member.roles.remove(config.memberRole);
         
