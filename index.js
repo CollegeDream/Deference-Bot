@@ -74,6 +74,15 @@ client.on("message", async message => {
         .setImage('attachment://guide.png')
         .setTimestamp()
 
+        const embed_failed_none = new Discord.MessageEmbed()
+        .setColor('#fc0303')
+        .setTitle('Verification failed  ❌')
+        .addField('"Update your tag from " + linkedAccount + " to " + message.author.tag', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        .attachFiles(['./images/guide.png'])
+        .setImage('attachment://guide.png')
+        .setTimestamp()
+        
         const embed_member_given = new Discord.MessageEmbed()
         .setColor('#00c914')
         .setTitle('You have been given the Guild Member👊 role')
@@ -96,7 +105,7 @@ client.on("message", async message => {
                 }
       } else {
                message.member.roles.remove(config.verifiedRole)
-               return message.reply()
+               return message.reply(embed_failed_none)
       }
                 
       let isInGuild = false;
