@@ -66,9 +66,10 @@ client.on("message", async message => {
         .setTimestamp()
         
         const embed_failed = new Discord.MessageEmbed()
+        var str1 = "Hello";
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
-        .addField('"Update your tag from " + linkedAccount + " to " + message.author.tag', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        .addField('Update your tag from  ', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
