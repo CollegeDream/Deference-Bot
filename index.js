@@ -68,7 +68,7 @@ client.on("message", async message => {
         var str1 = "Update your tag from " + linkedAccount;
         var str2 = " to " + message.author.tag;
         var str3 = str1.concat(str2);
-        
+        var str4 = "Update your tag from NONE to " + message.author.tag;
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
@@ -81,7 +81,7 @@ client.on("message", async message => {
         const embed_failed_none = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
-        .addField(str3, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        .addField(str4, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
