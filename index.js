@@ -56,7 +56,7 @@ client.on("message", async message => {
     if(!message.content.startsWith(config.prefix)) return;
     if(command === "verify"){
       const username = args[0]
-
+      const linkedAccount = await getLinkedDiscord(username)
       const embed_verified = new Discord.MessageEmbed()
         .setColor('#00c914')
         .setTitle('Verification successful ✅')
@@ -64,12 +64,12 @@ client.on("message", async message => {
         .addField('\u200B', '\u200B', false)
         .addField('Nickname changed to:', username, false)
         .setTimestamp()
-
+        
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
-        .addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
-        .addField('\u200B', '\u200B', false)
+        .addField('Update your tag from ' + linkedAccount + ' to ' + message.author.tag', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
         .setTimestamp()
@@ -87,12 +87,18 @@ client.on("message", async message => {
         .setColor('#03fcf4')
 
       if(!username) return message.reply("You need to say your minecraft username.")
-      const linkedAccount = await getLinkedDiscord(username)
-     if(linkedAccount !== message.author.tag){ // If the linked discord tag is not the same as the user that ran it
-        message.member.roles.remove(config.verifiedRole)  
-        return message.reply(embed_failed)
-
+      //linkedAccount was here
+            
+     if(linkedAccount){ // If the linked discord tag is not the same as the user that ran it
+        if(linkedAccount !== message.author.tag){
+               message.member.roles.remove(config.verifiedRole)  
+               return message.reply(embed_failed)
+                }
+      } else {
+               message.member.roles.remove(config.verifiedRole)
+               return message.reply(embed_failed_none)
       }
+                
       let isInGuild = false;
       const guildID = await getGuild(username);
       const guild = await guildInfo(guildID).catch(e=>null);
