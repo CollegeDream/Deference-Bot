@@ -43,7 +43,7 @@ async function getLinkedDiscord(username){
 }
 
 async function removeMemberRole(user, role){
-    await user.roles.remove(role);
+    await user.remove_roles(role);
 }
 
 const Discord = require('discord.js')
