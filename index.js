@@ -96,7 +96,7 @@ client.on("message", async message => {
                 }
       } else {
                message.member.roles.remove(config.verifiedRole)
-               return message.reply(embed_failed_none)
+               return message.reply()
       }
                 
       let isInGuild = false;
