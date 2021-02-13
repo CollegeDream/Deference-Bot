@@ -124,12 +124,11 @@ client.on("message", async message => {
         guildName = guild.name;
         embed_guildName.setTitle('Guild found: ' + guildName)
         message.channel.send(embed_guildName)
-        message.member.roles.remove(config.memberRole) 
+        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
-        //await message.member.roles.remove(config.memberRole) 
-        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 120);
+        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
 
