@@ -144,7 +144,7 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
 
         message.channel.send(embed_verified)
-        if(message.member.roles.cache.has(config.memberRole)){message.member.roles.remove(config.memberRole)} 
+       
 
           if(isInGuild){
             // If it is in the guild, then add the member role
