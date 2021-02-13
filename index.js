@@ -129,7 +129,7 @@ client.on("message", async message => {
         // User is not in guild, but has the member role
         await message.channel.send(embed_member_left)
         //await message.member.roles.remove(config.memberRole) 
-        setTimeout(function(message.member.roles.remove(config.memberRole) ){ }, 100);
+        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 100);
       }
       
 
