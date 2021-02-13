@@ -74,7 +74,8 @@ client.on("message", async message => {
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
-        .addField(str3, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+        .addField(str3, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', false)
+        .addField('example', 'example', true)
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
@@ -84,7 +85,7 @@ client.on("message", async message => {
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
         .addField('You have not linked your account', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
-        //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
+
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
         .setTimestamp()
