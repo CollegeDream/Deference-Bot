@@ -145,7 +145,7 @@ client.on("message", async message => {
         message.channel.send(embed_verified)
        
 
-          if(isInGuild){
+          if(!isInGuild){
             // If it is in the guild, then add the member role
 
             message.channel.send(embed_member_given)
