@@ -67,8 +67,8 @@ client.on("message", async message => {
         .addField('Nickname changed to:', username, false)
         .setTimestamp()
         
-        var str1 = "Update your tag from " + `linkedAccount`;
-        var str2 = " to " + `message.author.tag`;
+        var str1 = "Update your tag from " + linkedAccount;
+        var str2 = " to " + message.author.tag;
         var str3 = str1.concat(str2);
       
         const embed_failed = new Discord.MessageEmbed()
