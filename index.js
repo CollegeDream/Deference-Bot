@@ -53,6 +53,7 @@ const client = new Discord.Client();
 client.on("ready", () =>console.log(`${client.user.tag} is online!`))
 
 client.on("message", async message => {
+  if(message.author.bot) return;
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
