@@ -42,9 +42,7 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-async function removeMemberRole(user, role){
-    await user.roles.remove([role, role, role]);
-}
+
 
 const Discord = require('discord.js')
 
@@ -53,7 +51,7 @@ const client = new Discord.Client();
 client.on("ready", () =>console.log(`${client.user.tag} is online!`))
 
 client.on("message", async message => {
-  if(message.author.bot) return;
+  //if(message.author.bot) return;
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
@@ -125,13 +123,12 @@ client.on("message", async message => {
         // Checks if it is in any guild
         guildName = guild.name;
         embed_guildName.setTitle('Guild found: ' + guildName)
-        //await message.channel.send(embed_guildName)
-        await removeMemberRole(message.member, config.memberRole);  
+        message.channel.send(embed_guildName)
+        message.member.roles.remove(config.memberRole) 
       }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
-        //await message.channel.send(embed_member_left)
-        
-        await removeMemberRole(message.member, config.memberRole);  
+        await message.channel.send(embed_member_left)
+        message.member.roles.remove(config.memberRole) 
       }
       
 
@@ -146,6 +143,8 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
 
         message.channel.send(embed_verified)
+        if(message.member.roles.cache.has(config.memberRole)){message.member.roles.remove(config.memberRole)} 
+
           if(isInGuild){
             // If it is in the guild, then add the member role
 
