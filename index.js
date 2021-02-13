@@ -128,7 +128,7 @@ client.on("message", async message => {
       }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         await message.channel.send(embed_member_left)
-        message.member.roles.remove(config.memberRole) 
+        return message.member.roles.remove(config.memberRole) 
       }
       
 
@@ -143,7 +143,7 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
 
         message.channel.send(embed_verified)
-        if(message.member.roles.cache.has(config.memberRole)){message.member.roles.remove(config.memberRole)} 
+        //if(message.member.roles.cache.has(config.memberRole)){message.member.roles.remove(config.memberRole)} 
 
           if(isInGuild){
             // If it is in the guild, then add the member role
