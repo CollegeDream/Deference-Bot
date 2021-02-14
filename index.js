@@ -67,14 +67,14 @@ client.on("message", async message => {
         .addField('Nickname changed to:', username, false)
         .setTimestamp()
         
-        var str1 = "Update your tag from " + \`linkedAccount\n\`;
+        var str1 = "Update your tag from " + linkedAccount;
         var str2 = " to " + message.author.tag;
         var str3 = str1.concat(str2);
       
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
-        .addField(str3, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', false)
+        .addField(`\`${linkedAccount}\n\``, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', false)
        
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
