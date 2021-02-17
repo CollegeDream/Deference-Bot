@@ -94,7 +94,7 @@ client.on("message", async message => {
         
         const embed_member_given = new Discord.MessageEmbed()
         .setColor('#00c914')
-        .setTitle(`You have been given the <@&${config.memberRole}> role`)
+        .setTitle(`You have been given the <@&${686070737194450995}> role`)
 
         const embed_member_left = new Discord.MessageEmbed()
         .setColor('#c90000')
