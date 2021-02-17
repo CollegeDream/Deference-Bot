@@ -65,7 +65,7 @@ client.on("message", async message => {
         .setTitle('Verification successful ✅')
         .addField('You gained the Verified role and chat access', '\u200B', false)
         .addField('Nickname changed to:', username, false)
-        .setThumbnail(` https://crafatar.com/renders/avatars/${playerUUID}`)
+        .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
         
         /*var str1 = "Update your tag from " + linkedAccount;
