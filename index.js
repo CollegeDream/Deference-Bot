@@ -66,7 +66,7 @@ client.on("message", async message => {
         .addField('Matching Discord tag found', 'You gained the Verified role and chat access', false)
         .addField('\u200B', '\u200B', false)
         .addField('Nickname changed to:', username, false)
-        .setThumbnail('https://crafatar.com/avatars/`${playerUUID}`.png')
+        .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
         
         /*var str1 = "Update your tag from " + linkedAccount;
