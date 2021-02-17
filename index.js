@@ -153,7 +153,7 @@ client.on("message", async message => {
           if(isInGuild){
             // If it is in the guild, then add the member role
 
-            message.channel.send(embed_member_given)
+            embed_verified.addField('Member of Deference', 'Given Guild Member👊 role', false)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
