@@ -92,9 +92,11 @@ client.on("message", async message => {
         .setImage('attachment://guide.png')
         .setTimestamp()
         
+        const memberRoleObject = message.guild.roles.cache.find(role => role.name == "Guild Member👊");
+        
         const embed_member_given = new Discord.MessageEmbed()
         .setColor('#00c914')
-        .setTitle(`You have been given the <@&${686070737194450995}> role`)
+        .setTitle(`You have been given the ${memberRoleObject} role`)
 
         const embed_member_left = new Discord.MessageEmbed()
         .setColor('#c90000')
