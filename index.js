@@ -146,9 +146,9 @@ client.on("message", async message => {
       }
       message.member.setNickname(username).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
-        if(!isInGuild){
+        if(isInGuild){
         message.channel.send(embed_verified)
-        }else{
+        } else {
             // If it is in the guild, then add the member role
 
             embed_verified.addField('Member of Deference', 'Given Guild Member👊 role', false)
