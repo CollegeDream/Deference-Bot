@@ -56,6 +56,7 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
+    if(command === "printEmbed"){message.channel.send("test message")}
     if(command === "verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
