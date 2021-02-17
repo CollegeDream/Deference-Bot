@@ -59,12 +59,14 @@ client.on("message", async message => {
     if(command === "verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
+      const playerUUID = await getUUID(username);
       const embed_verified = new Discord.MessageEmbed()
         .setColor('#00c914')
         .setTitle('Verification successful ✅')
         .addField('Matching Discord tag found', 'You gained the Verified role and chat access', false)
         .addField('\u200B', '\u200B', false)
         .addField('Nickname changed to:', username, false)
+        .setThumbnail('https://crafatar.com/avatars/playerUUID')
         .setTimestamp()
         
         /*var str1 = "Update your tag from " + linkedAccount;
