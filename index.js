@@ -101,7 +101,7 @@ client.on("message", async message => {
         .addField('\u200B', 'Your member role was taken away', false)
 
         const embed_guildName = new Discord.MessageEmbed()
-        .setColor('#03fcf4')
+        .setColor('#ebd300')
 
       if(!username) return message.reply("You need to say your minecraft username.")
       //linkedAccount was here
