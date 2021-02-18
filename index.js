@@ -68,7 +68,7 @@ client.on("message", async message => {
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
-        .setFooter('A self-coded bot')
+        .setFooter('Guarding the server\'s gate')
         
         /*var str1 = "Update your tag from " + linkedAccount;
         var str2 = " to " + message.author.tag;
