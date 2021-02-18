@@ -68,6 +68,7 @@ client.on("message", async message => {
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
+        .setFooter('A self-coded bot')
         
         /*var str1 = "Update your tag from " + linkedAccount;
         var str2 = " to " + message.author.tag;
@@ -77,7 +78,7 @@ client.on("message", async message => {
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
         .addField(`Update your tag from \`${linkedAccount}\n\` to \`${message.author.tag}\n\``, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', false)
-       
+        .setFooter('A self-coded bot')
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
@@ -91,7 +92,7 @@ client.on("message", async message => {
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
         .setTimestamp()
-        
+        .setFooter('A self-coded bot')
         //const memberRoleObject = message.guild.roles.cache.find(role => role.name == "Guild Member👊");
 
         const embed_member_left = new Discord.MessageEmbed()
