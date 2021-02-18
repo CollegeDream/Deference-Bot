@@ -83,16 +83,16 @@ client.on("message", async message => {
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
         .setTimestamp()
+        .setFooter('Guarding the server\'s gate')
 
         const embed_failed_none = new Discord.MessageEmbed()
         .setColor('#fc0303')
         .setTitle('Verification failed  ❌')
         .addField('You have not linked your account. Did you enter the correct IGN?', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
-
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
         .setTimestamp()
-        .setFooter('A self-coded bot')
+        .setFooter('Guarding the server\'s gate')
         //const memberRoleObject = message.guild.roles.cache.find(role => role.name == "Guild Member👊");
 
         const embed_member_left = new Discord.MessageEmbed()
