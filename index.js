@@ -63,7 +63,7 @@ client.on("message", async message => {
       const playerUUID = await getUUID(username);
       const embed_verified = new Discord.MessageEmbed()
         .setColor('#00c914')
-        .addField('Verification successful ✅', 'You gained the Verified role and chat access', false)
+        .addField('Verification successful ✅', `You gained the <@&801869477703712868> role and chat access`, false)
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
@@ -97,7 +97,7 @@ client.on("message", async message => {
         const embed_member_left = new Discord.MessageEmbed()
         .setColor('#c90000')
         .setTitle('You have left the guild')
-        .addField('\u200B', 'Your member role was taken away', false)
+        .addField(`Your <@&686070737194450995> role was taken away!`, '\u200B', false)
 
         const embed_guildName = new Discord.MessageEmbed()
         .setColor('#ebd300')
