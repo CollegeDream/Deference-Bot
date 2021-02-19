@@ -64,7 +64,7 @@ client.on("message", async message => {
       const embed_verified = new Discord.MessageEmbed()
         .setColor('#00c914')
         .setTitle('Verification successful ✅')
-        .addField('You gained the Verified\n. role and chat access', '\u200B', false)
+        .addField('You gained the Verified role and chat access', '\u200B', false)
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
