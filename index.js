@@ -42,6 +42,9 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
+async function removeMemberRole(){
+    user.member.roles.remove(config.memberRole)
+}
 
 const Discord = require('discord.js')
 
@@ -61,6 +64,7 @@ client.on("message", async message => {
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
       const embed_verified = new Discord.MessageEmbed()
+      const authorID = message.author.id;
         .setColor('#00c914')
         .addField('Verification successful ✅', `You gained the <@&801869477703712868> role and chat access`, false)
         .addField('Nickname changed to:', username, false)
@@ -117,9 +121,7 @@ client.on("message", async message => {
       const guild = await guildInfo(guildID).catch(e=>null);
       let guildName;
             
-      async function removeMemberRole(){
-                message.member.roles.remove(config.memberRole)
-        }
+      
 
       if(!guildID){
         // Checks if it is in any guild
@@ -147,6 +149,7 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(isInGuild){
         message.channel.send(embed_verified)
+        message.channel.send(authorID)
         } else {
             // If it is in the guild, then add the member role
 
