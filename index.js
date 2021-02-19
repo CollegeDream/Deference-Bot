@@ -42,13 +42,7 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-function removeMemberRole(authorID){
-    const guild = client.guilds.cache.get(config.targetGuild);   // copy the id of the server your bot is in and paste it in place of guild-ID.
-    const role = guild.roles.cache.get(config.memberRole);  // here we are getting the role object using the id of that role.
-    const member = guild.members.fetch(authorID); // here we are getting the member object using the id of that member. This is the member we will add the role to.
-    
-    member.roles.remove(role);   // here we just added the role to the member we got.
-}
+
 
 
 const Discord = require('discord.js')
@@ -139,7 +133,7 @@ client.on("message", async message => {
       }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
-        setTimeout(function(){removeMemberRole(authorID), 110});
+        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
 
