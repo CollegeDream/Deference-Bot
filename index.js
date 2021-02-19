@@ -43,9 +43,12 @@ async function getLinkedDiscord(username){
 }
 
 async function removeMemberRole(authorID){
-    const member = client.users.cache.get(authorID);
-    member.roles.remove(config.memberRole)
+    const guild = bot.guilds.cache.get(config.targetGuild);   // copy the id of the server your bot is in and paste it in place of guild-ID.
+    const role = guild.roles.cache.get(config.memberRole);  // here we are getting the role object using the id of that role.
+    const member = await guild.members.fetch(authorID); // here we are getting the member object using the id of that member. This is the member we will add the role to.
+    member.roles.add(role);   // here we just added the role to the member we got.
 }
+
 
 const Discord = require('discord.js')
 
