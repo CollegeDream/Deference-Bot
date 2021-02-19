@@ -140,7 +140,7 @@ client.on("message", async message => {
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
         
-        setTimeout(await removeMemberRole(authorID), 110);
+        setTimeout(function(){await removeMemberRole(authorID), 110);
       }
       
 
