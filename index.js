@@ -128,10 +128,8 @@ client.on("message", async message => {
       }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         //message.channel.send(embed_member_left)
-        function removeMemberRole(){
-                let promise = message.member.roles.remove(config.memberRole);
-                promise.then(message.channel.send(embed_member_left), message.channel.send('error'));
-        }
+        await message.channel.send(embed_member_left).then(message.member.roles.remove(config.memberRole), message.channel.send("error"));
+        //message.member.roles.remove(config.memberRole)
         //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
