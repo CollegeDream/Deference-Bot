@@ -127,9 +127,8 @@ client.on("message", async message => {
         embed_verified.setTitle('No guild found')
       }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
-        //message.channel.send(embed_member_left)
-        await message.channel.send(embed_member_left).then(message.member.roles.remove(config.memberRole), message.channel.send("error"));
-        //message.member.roles.remove(config.memberRole)
+        message.channel.send(embed_member_left)
+        async message.member.roles.remove(config.memberRole)
         //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
