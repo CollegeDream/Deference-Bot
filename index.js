@@ -42,7 +42,9 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-
+async function removeMemberRole(){
+        message.member.roles.remove(config.memberRole)
+}
 
 const Discord = require('discord.js')
 
@@ -128,7 +130,7 @@ client.on("message", async message => {
       }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
-        async message.member.roles.remove(config.memberRole)
+        await removeMemberRole();
         //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
