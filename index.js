@@ -63,8 +63,7 @@ client.on("message", async message => {
       const playerUUID = await getUUID(username);
       const embed_verified = new Discord.MessageEmbed()
         .setColor('#00c914')
-        .setTitle('Verification successful ✅')
-        .addField('You gained the Verified role and chat access', '\u200B', false)
+        .addField('Verification successful ✅', 'You gained the Verified role and chat access', false)
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
@@ -124,8 +123,7 @@ client.on("message", async message => {
       if(guildID){
         // Checks if it is in any guild
         guildName = guild.name;
-        embed_guildName.setTitle('Guild found: ' + guildName)
-        message.channel.send(embed_guildName)
+        embed_verified.setTitle('Guild found: ' + guildName)
         setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
