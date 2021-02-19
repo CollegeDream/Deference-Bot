@@ -139,10 +139,7 @@ client.on("message", async message => {
       }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
-        (async () => {
-                await removeMemberRole(authorID);
-                console.log("Connection pool created successfully.");
-        })();
+        removeMemberRole().then(response => console.log("removed"));
         //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }
       
