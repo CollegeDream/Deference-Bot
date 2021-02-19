@@ -42,9 +42,6 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-async function removeMemberRole(){
-        message.member.roles.remove(config.memberRole)
-}
 
 const Discord = require('discord.js')
 
@@ -119,7 +116,11 @@ client.on("message", async message => {
       const guildID = await getGuild(username);
       const guild = await guildInfo(guildID).catch(e=>null);
       let guildName;
-      
+            
+      async function removeMemberRole(){
+                message.member.roles.remove(config.memberRole)
+        }
+
       if(!guildID){
         // Checks if it is in any guild
         guildName = guild.name;
