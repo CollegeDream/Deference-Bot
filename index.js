@@ -99,8 +99,7 @@ client.on("message", async message => {
         .setTitle('You have left the guild')
         .addField(`Your <@&686070737194450995> role was taken away!`, '\u200B', false)
 
-        const embed_guildName = new Discord.MessageEmbed()
-        .setColor('#ebd300')
+     
 
       if(!username) return message.reply("You need to say your minecraft username.")
       //linkedAccount was here
@@ -120,14 +119,14 @@ client.on("message", async message => {
       const guild = await guildInfo(guildID).catch(e=>null);
       let guildName;
       
-      if(guildID){
+      if(!guildID){
         // Checks if it is in any guild
         guildName = guild.name;
         embed_verified.setTitle('Guild found: ' + guildName)
         setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }else if(!guildID && !message.member.roles.cache.has(config.memberRole)){
         embed_verified.setTitle('No guild found')
-      }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
+      }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
         setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
@@ -143,7 +142,7 @@ client.on("message", async message => {
       }
       message.member.setNickname(username).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
-        if(!isInGuild){
+        if(isInGuild){
         message.channel.send(embed_verified)
         } else {
             // If it is in the guild, then add the member role
