@@ -63,8 +63,9 @@ client.on("message", async message => {
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
-      const embed_verified = new Discord.MessageEmbed()
       const authorID = message.author.id;
+      const embed_verified = new Discord.MessageEmbed()
+      
         .setColor('#00c914')
         .addField('Verification successful ✅', `You gained the <@&801869477703712868> role and chat access`, false)
         .addField('Nickname changed to:', username, false)
