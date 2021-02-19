@@ -42,7 +42,7 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-async function removeMemberRole(authorID){
+function removeMemberRole(authorID){
     const guild = client.guilds.cache.get(config.targetGuild);   // copy the id of the server your bot is in and paste it in place of guild-ID.
     const role = guild.roles.cache.get(config.memberRole);  // here we are getting the role object using the id of that role.
     const member = await guild.members.fetch(authorID); // here we are getting the member object using the id of that member. This is the member we will add the role to.
@@ -140,7 +140,7 @@ client.on("message", async message => {
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
         
-        setTimeout(function(){await removeMemberRole(authorID), 110);
+        setTimeout(function(){removeMemberRole(authorID), 110);
       }
       
 
