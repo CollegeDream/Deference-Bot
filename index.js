@@ -120,12 +120,12 @@ client.on("message", async message => {
       const guild = await guildInfo(guildID).catch(e=>null);
       let guildName;
       
-      if(!guildID){
+      if(guildID){
         // Checks if it is in any guild
         guildName = guild.name;
         embed_verified.setTitle('Guild found: ' + guildName)
         setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
-      }else if(guildID && message.member.roles.cache.has(config.memberRole)){
+      }else if(!guildID && !message.member.roles.cache.has(config.memberRole)){
         embed_verified.setTitle('No guild found')
       }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
