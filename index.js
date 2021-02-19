@@ -96,8 +96,7 @@ client.on("message", async message => {
 
         const embed_member_left = new Discord.MessageEmbed()
         .setColor('#c90000')
-        .setTitle('You have left the guild')
-        .addField(`Your <@&686070737194450995> role was taken away!`, '\u200B', false)
+        .addField('\u200B', `Your <@&686070737194450995> role was taken away!`, false)
 
      
 
