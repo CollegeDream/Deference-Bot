@@ -123,17 +123,18 @@ client.on("message", async message => {
             
       
 
-      if(guildID){
+      if(!guildID){
         // Checks if it is in any guild
         guildName = guild.name;
         embed_verified.setTitle('Guild found: ' + guildName)
         setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
       }else if(!guildID && !message.member.roles.cache.has(config.memberRole)){
         embed_verified.setTitle('No guild found')
-      }else if(guildID !== config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
+      }else if(guildID === config.hypixelGuild && message.member.roles.cache.has(config.memberRole)){
         // User is not in guild, but has the member role
         message.channel.send(embed_member_left)
-        setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
+        //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
+        message.member.roles.remove(config.memberRole).catch(error => {console.log(error)});
       }
       
 
@@ -146,7 +147,7 @@ client.on("message", async message => {
       }
       message.member.setNickname(username).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
-        if(!isInGuild){
+        if(isInGuild){
         message.channel.send(embed_verified)
         } else {
             // If it is in the guild, then add the member role
