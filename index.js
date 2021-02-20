@@ -121,7 +121,7 @@ client.on("message", async message => {
       const guild = await guildInfo(guildID).catch(e=>null);
       let guildName;
             
-      
+      message.member.setNickname(username).catch(console.log)
 
       if(!guildID){
         // Checks if it is in any guild
@@ -135,6 +135,7 @@ client.on("message", async message => {
         message.channel.send(embed_member_left)
         //setTimeout(function(){message.member.roles.remove(config.memberRole)}, 110);
         message.member.roles.remove(config.memberRole).catch(error => {console.log(error)});
+        return;
       }
       
 
@@ -145,7 +146,7 @@ client.on("message", async message => {
         // This will run if the user is not in the guild, but is in any guild.
         
       }
-      message.member.setNickname(username).catch(console.log)
+      
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(isInGuild){
         message.channel.send(embed_verified)
