@@ -51,6 +51,11 @@ const client = new Discord.Client();
 
 client.on("ready", () =>console.log(`${client.user.tag} is online!`))
 
+client.user.setActivity("Guarding the server's gate", {
+  type: "GAMING",
+  url: "https://www.twitch.tv/monstercat"
+});
+
 client.on("message", async message => {
   //if(message.author.bot) return;
   if(!message.guild || message.guild.id !== config.targetGuild) return;
