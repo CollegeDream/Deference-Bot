@@ -50,10 +50,10 @@ const Discord = require('discord.js')
 const client = new Discord.Client();
 
 client.on("ready", () =>console.log(`${client.user.tag} is online!`))
-
+client.user.setStatus('online', 'Watching the server\'s gate') 
 client.on("message", async message => {
   //if(message.author.bot) return;
-  client.user.setStatus('online', 'Watching the server\'s gate') 
+  
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
