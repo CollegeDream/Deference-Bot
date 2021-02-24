@@ -168,5 +168,5 @@ client.on("message", async message => {
 
 
 // gets token from token.txt file and logs in with it.
-const token = fs.readFileSync(__dirname+"/${config.littleKey}").toString()
+const token = fs.readFileSync(__dirname+`/${config.littleKey}`).toString()
 client.login(token)
