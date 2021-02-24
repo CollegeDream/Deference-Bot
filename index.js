@@ -53,9 +53,7 @@ client.on("ready", () =>console.log(`${client.user.tag} is online!`))
 
 client.on("message", async message => {
   //if(message.author.bot) return;
-  client.user.setActivity("Guarding the server's gate", {
-  type: "GAMING",
-  });
+  client.user.setStatus('online', 'Watching the server\'s gate') 
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
