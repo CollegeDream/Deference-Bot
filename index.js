@@ -50,7 +50,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client();
 
 client.on("ready", () =>console.log(`${client.user.tag} is online!`))
-client.user.setStatus('online', 'Watching the server\'s gate') 
+client.user.setPresence('online', 'Watching the server\'s gate') 
 client.on("message", async message => {
   //if(message.author.bot) return;
   
