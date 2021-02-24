@@ -49,7 +49,7 @@ const Discord = require('discord.js')
 
 const client = new Discord.Client();
 
-client.on(client.user.setActivity("Watching over the server"), () =>console.log(`${client.user.tag} is online!`))
+client.on(client.user.setStatus("Watching over the server"), () =>console.log(`${client.user.tag} is online!`))
 
 client.on("message", async message => {
   //if(message.author.bot) return;
