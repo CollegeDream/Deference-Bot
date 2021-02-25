@@ -59,7 +59,7 @@ client.on("message", async message => {
     const command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
     if(command === "printEmbed"){message.channel.send("test message")}
-    if(command === "verify"){
+    if(command === "verify" || command === "Verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
