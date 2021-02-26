@@ -68,7 +68,7 @@ client.on("message", async message => {
       
         .setColor('#00c914')
         .setAuthor('✅Successfuly verified')
-        .addField('You gained the <@&801869477703712868> role and chat access', '\u200B', false)
+        .addField(`You gained the <@&801869477703712868> role and chat access`, '\u200B', false)
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
