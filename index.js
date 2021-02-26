@@ -183,6 +183,7 @@ client.on("message", async message => {
 
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
+            message.channel.send(`Display Name: ${player.displayname}`)
             message.channel.send(`Bedwars level: ${bedwarsLevel}`)
             message.channel.send(`Network level : ${networkLevel} (for testing)`)
             message.member.roles.add(config.memberRole).catch(e=>{
