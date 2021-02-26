@@ -198,8 +198,10 @@ client.on("message", async message => {
     }
 
     if(command === "stats"){
-      if(!username) return message.reply("You need to say your minecraft username.")
+      
       const username = args[0]
+      if(!username) return message.reply("You need to say your minecraft username.")
+
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
       const authorID = message.author.id;
