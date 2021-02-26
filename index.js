@@ -76,10 +76,7 @@ client.on("message", async message => {
         "You melt my heart whenever I see you!"
 
       ];
-      const compliments = new Discord.MessageEmbed()
-        .setColor('#fc037b')
-        .setTitle(replies[Math.floor(Math.random() * replies.length)])
-      message.channel.send(compliments).then((message) => {
+      message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
         message.react('🤗');
       }).catch(err => {console.log(err);})
     
