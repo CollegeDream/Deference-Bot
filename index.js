@@ -89,6 +89,7 @@ client.on("message", async message => {
       const authorID = message.author.id;
       const player = await getPlayer(username);
       const bedwarsLevel = player.achievements.bedwars_level;
+      const networkLevel = player.achievements.network_level;
       const embed_verified = new Discord.MessageEmbed()
       
         .setColor('#00c914')
@@ -183,7 +184,7 @@ client.on("message", async message => {
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
             message.channel.send(`Bedwars level: ${bedwarsLevel}`)
-            message.channel.send(`Network level : ${player.achievements.network_level} (for testing)`)
+            message.channel.send(`Network level : ${networkLevel} (for testing)`)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
