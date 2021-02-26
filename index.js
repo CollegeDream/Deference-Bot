@@ -95,7 +95,7 @@ client.on("message", async message => {
         .setColor('#00c914')
         .setAuthor('✅Successfuly verified')
         //.addField('\u200B', 'You gained the <@&801869477703712868> role and chat access', false)
-        .addField('Nickname changed to:', ${player.displayname}, false)
+        .addField('Nickname changed to:', `${player.displayname}`, false)
         //.setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setThumbnail(`https://visage.surgeplay.com/full/${playerUUID}?size=240`)
         .setTimestamp()
