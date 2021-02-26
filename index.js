@@ -43,8 +43,6 @@ async function getLinkedDiscord(username){
 }
 
 
-//comment
-
 const Discord = require('discord.js')
 
 const client = new Discord.Client();
@@ -58,7 +56,17 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
-    if(command === "printEmbed"){message.channel.send("test message")}
+    if(command === "hug" || command === "Hug"){
+      let replies = ["You are wonderful!", 
+        "You are enough",
+        "You are loved",
+        "Everything about you makes me happy!"
+      ];
+      message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
+        message.react('🤗');
+      }).catch(err => {console.log(err);})
+    
+    }
     if(command === "verify" || command === "Verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
