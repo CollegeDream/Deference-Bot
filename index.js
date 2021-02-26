@@ -87,6 +87,8 @@ client.on("message", async message => {
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
       const authorID = message.author.id;
+      const player = await getPlayer(username);
+      const bedwarsLevel = player.achievements.bedwars_level;
       const embed_verified = new Discord.MessageEmbed()
       
         .setColor('#00c914')
@@ -174,6 +176,7 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(!isInGuild){
         message.channel.send(embed_verified)
+        message.channel.send(bedwarsLevel)
         } else {
             // If it is in the guild, then add the member role
 
