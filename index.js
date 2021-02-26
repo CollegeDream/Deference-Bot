@@ -58,14 +58,16 @@ client.on("message", async message => {
     if(!message.content.startsWith(config.prefix)) return;
     if(command === "hug" || command === "Hug"){
       let replies = ["You are wonderful!", 
-        "You are enough",
-        "You are loved",
+        "You are enough!",
+        "You are loved!",
         "Everything about you makes me happy!",
-        `I love you, ${message.author.toString()}`,
+        `I love you, ${message.author.toString()}!`,
         "You are my sunshine!",
         "Being around you makes my whole day!",
         "Here's a free hug, next one costs $2.00",
         "Believe in yourself!",
+        "I just wanna sit next to you until forever!",
+        "You are unique! Embrace who you are."
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
         message.react('🤗');
