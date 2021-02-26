@@ -173,7 +173,7 @@ client.on("message", async message => {
         // This will run if the user is not in the guild, but is in any guild.
         
       }
-      message.member.setNickname(player.displayName).catch(console.log)
+      message.member.setNickname(player.displayname).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(!isInGuild){
         message.channel.send(embed_verified)
