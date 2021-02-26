@@ -68,7 +68,7 @@ client.on("message", async message => {
         "Believe in yourself!",
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
-        message.react('🤗🤗');
+        message.react('🤗');
       }).catch(err => {console.log(err);})
     
     }
