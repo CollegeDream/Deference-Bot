@@ -89,7 +89,7 @@ client.on("message", async message => {
       const authorID = message.author.id;
       const player = await getPlayer(username);
       const bedwarsLevel = player.achievements.bedwars_level;
-      const networkLevel = player.achievements.network_level;
+      const networkLevel = player.networkExp;
       const embed_verified = new Discord.MessageEmbed()
       
         .setColor('#00c914')
