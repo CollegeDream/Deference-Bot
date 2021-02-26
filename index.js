@@ -61,10 +61,14 @@ client.on("message", async message => {
         "You are enough",
         "You are loved",
         "Everything about you makes me happy!",
-        `I love you, ${message.author.toString()}`
+        `I love you, ${message.author.toString()}`,
+        "You are my sunshine!",
+        "Being around you makes my whole day!",
+        "Here's a free hug, next one costs $2.00",
+        "Believe in yourself!",
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
-        message.react('🤗');
+        message.react('🤗🤗');
       }).catch(err => {console.log(err);})
     
     }
