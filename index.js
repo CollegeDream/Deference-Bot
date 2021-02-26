@@ -81,11 +81,13 @@ client.on("message", async message => {
       }).catch(err => {console.log(err);})
     
     }
+
     if(command === "verify" || command === "Verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
       const authorID = message.author.id;
+      const playerName = await getPlayer(username);
       const embed_verified = new Discord.MessageEmbed()
       
         .setColor('#00c914')
@@ -169,7 +171,7 @@ client.on("message", async message => {
         // This will run if the user is not in the guild, but is in any guild.
         
       }
-      message.member.setNickname(username).catch(console.log)
+      message.member.setNickname(playerName).catch(console.log)
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(!isInGuild){
         message.channel.send(embed_verified)
