@@ -67,7 +67,14 @@ client.on("message", async message => {
         "Here's a free hug, next one costs $2.00",
         "Believe in yourself!",
         "I just wanna sit next to you until forever!",
-        "You are unique! Embrace who you are."
+        "You are unique! Embrace who you are.",
+        "You bring out the best in other people!",
+        "You're more fun than bubble wrap!",
+        "Our community is better when you're in it!",
+        "I bet you do crossword puzzles in ink! (you're confident)",
+        `${message.author.toString()}, I'm proud of you!`,
+        "You melt my heart whenever I see you!"
+
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
         message.react('🤗');
