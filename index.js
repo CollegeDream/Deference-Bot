@@ -176,12 +176,13 @@ client.on("message", async message => {
       message.member.roles.add([config.verifiedRole]).then(()=>{
         if(!isInGuild){
         message.channel.send(embed_verified)
-        message.channel.send(bedwarsLevel)
+        
         } else {
             // If it is in the guild, then add the member role
 
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
+            message.channel.send(bedwarsLevel)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
