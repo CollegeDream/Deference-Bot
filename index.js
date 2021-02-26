@@ -68,7 +68,7 @@ client.on("message", async message => {
       
         .setColor('#00c914')
         .setAuthor('✅Successfuly verified')
-        .addField('\u200B', 'You gained the <@&801869477703712868> role and chat access', false)
+        //.addField('\u200B', 'You gained the <@&801869477703712868> role and chat access', false)
         .addField('Nickname changed to:', username, false)
         .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
         .setTimestamp()
@@ -80,7 +80,7 @@ client.on("message", async message => {
       
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
-        .setTitle('Verification failed  ❌')
+        .setAuthor('❌Failed to verify')
         .addField(`Update your tag from \`${linkedAccount}\n\` to \`${message.author.tag}\n\``, 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', false)
         .setFooter('A self-coded bot')
         //.addField('Looks like your account is not linked or is out-dated', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
@@ -91,7 +91,7 @@ client.on("message", async message => {
 
         const embed_failed_none = new Discord.MessageEmbed()
         .setColor('#fc0303')
-        .setTitle('Verification failed  ❌')
+        .setAuthor('❌Failed to verify')
         .addField('You have not linked your account. Did you enter the correct IGN?', 'Here is a **[guide](https://www.youtube.com/watch?v=gqUPbkxxKLI&feature=emb_logo)** on how to link your account on Hypixel', true)
         .attachFiles(['./images/guide.png'])
         .setImage('attachment://guide.png')
