@@ -196,6 +196,17 @@ client.on("message", async message => {
         message.reply(`An error occured: \n\`${e}\``)
       })
     }
+
+    if(command === "stats"){
+      const username = args[0]
+      const linkedAccount = await getLinkedDiscord(username)
+      const playerUUID = await getUUID(username);
+      const authorID = message.author.id;
+      const player = await getPlayer(username);
+      const bedwarsLevel = player.achievements.bedwars_level;
+      const networkLevel = player.networkExp;
+      message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`)
+    }
 })
 
 
