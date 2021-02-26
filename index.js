@@ -183,7 +183,7 @@ client.on("message", async message => {
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
             message.channel.send(`Bedwars level: ${bedwarsLevel}`)
-            message.channel.send(`Skywars level : ${player.achievements.network_level} (for testing)`)
+            message.channel.send(`Network level : ${player.achievements.network_level} (for testing)`)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
