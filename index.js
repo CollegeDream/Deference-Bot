@@ -70,7 +70,8 @@ client.on("message", async message => {
         .setAuthor('✅Successfuly verified')
         //.addField('\u200B', 'You gained the <@&801869477703712868> role and chat access', false)
         .addField('Nickname changed to:', username, false)
-        .setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
+        //.setThumbnail(`https://crafatar.com/avatars/${playerUUID}`)
+        .setThumbnail(`https://visage.surgeplay.com/full/${playerUUID}`)
         .setTimestamp()
         .setFooter('Guarding the server\'s gate')
         
