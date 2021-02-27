@@ -62,7 +62,7 @@ client.on("message", async message => {
     if(command === "test"){
       if(!args.length){
         return message.channel.send('no argument provided');
-      } else if (args[0] = "stats"){
+      } else if (args[0] = "aliases"){
         if(!args[1]){
           message.channel.send(`Provide a username, ${message.author.toString()}`)
         } else {
@@ -70,7 +70,10 @@ client.on("message", async message => {
           const playerUUID = await getUUID(IGN);
           const player = await getPlayer(IGN);
 
-          message.channel.send(`Bedwars stars: ${player.achievements.bedwars_level}`);
+          var myArray = player.knownAliases;
+          for(var i = 0; i < myArray.length; i++){
+            message.channel.send(`${myArray[i]}\n`);
+          }
         }
       }
       
@@ -203,11 +206,7 @@ client.on("message", async message => {
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
             message.channel.send(`Display Name: ${player.displayname} (these are for testing)`)
-            var myArray = player.knownAliases;
-            for(var i = 0; i < myArray.length; i++){
-              message.channel.send(`${myArray[i]}\n`);
-            }
-            message.channel.send(`Network level : ${networkLevel}`)
+            message.channel.send(`Network EXP : ${networkLevel}`)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
