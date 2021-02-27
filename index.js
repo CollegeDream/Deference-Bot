@@ -59,6 +59,10 @@ client.on("message", async message => {
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
 
+    if(command === "help"){
+      message.channel.send('Bot in development, help command will be available later!')
+    }
+
     if(command === "test"){
       if(!args.length){
         return message.channel.send('no argument provided');
