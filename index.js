@@ -255,7 +255,7 @@ client.on("message", async message => {
         //const data = await response.json();
         //const {game} = data;
         //let gameType = game.type;
-        message.channel.send(`Game type: ${response.json().game.type}`)
+        message.channel.send(`Game type: ${await response.json().game.type}`)
 
       }
       getOnlineStatus(username);
