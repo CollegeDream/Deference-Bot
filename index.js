@@ -56,7 +56,8 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
-    if(command === "hug" || command === "Hug"){
+    command = message.content.toLowerCase();
+    if(command === "hug"){
       let replies = ["You are wonderful!", 
         "You are enough!",
         "You are loved!",
@@ -82,7 +83,7 @@ client.on("message", async message => {
     
     }
 
-    if(command === "verify" || command === "Verify"){
+    if(command === "verify"){
       const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
