@@ -47,7 +47,7 @@ async function getOnlineStatus(username){
   .then(result => result.json())
   .then(({game}) => {
     return game
-  }).catch(e=>null);
+  }).catch(e=>console.log(e));
 };
 
 
