@@ -25,7 +25,7 @@ async function getGuild(username){
 .then(({guild}) => {
     return guild
 }).catch(e=>null);
-}
+};
 
 async function guildInfo(guildID){
   return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
@@ -46,9 +46,9 @@ async function getOnlineStatus(username){
   return fetch(`https://api.slothpixel.me/api/players/${username}/status`)
   .then(result => result.json())
   .then(({playerStatus}) => {
-    return playerStatus
+    return playerStatus;
   }).catch(e=>null);
-}
+};
 
 
 const Discord = require('discord.js');
@@ -249,11 +249,11 @@ client.on("message", async message => {
       const bedwarsLevel = player.achievements.bedwars_level;
       
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
-      const playerObject = await getPlayer(username)
-      const player_status = await getOnlineStatus(playerObject);
+      //const playerObject = await getPlayer(username)
+      const playerStatus = await getOnlineStatus(usermane);
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
       message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`);
-      message.channel.send(`Online Status: ${player_status.game.type}`)
+      message.channel.send(`Online Status: ${playerStatus.type}`)
     }
 })
 
