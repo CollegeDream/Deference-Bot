@@ -250,7 +250,7 @@ client.on("message", async message => {
       
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
       //const playerObject = await getPlayer(username)
-      const playerStatus = await getOnlineStatus(usermane);
+      const playerStatus = await getOnlineStatus(username);
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
       message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`);
       message.channel.send(`Online Status: ${playerStatus.type}`)
