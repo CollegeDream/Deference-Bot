@@ -59,7 +59,7 @@ client.on("message", async message => {
     
     if(command === "test"){
       if(!args.length){
-        retrun message.channel.send('no argument provided');
+        return message.channel.send('no argument provided');
       }
       message.channel.send(`Command: ${command}\nArguemnts: ${args}`);
     }
