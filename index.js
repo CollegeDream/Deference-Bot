@@ -225,7 +225,7 @@ client.on("message", async message => {
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
             message.channel.send(`Display Name: ${player.displayname} (these are for testing)`)
-            message.channel.send(`Network level: ${networkLevel}`)
+            message.channel.send(`Network level: ${networkLevel.toFixed(2)}`)
             message.member.roles.add(config.memberRole).catch(e=>{
               console.log(e)
               message.reply(`An error occured: \n\`${e}\``)
