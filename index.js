@@ -47,7 +47,7 @@ const Discord = require('discord.js')
 
 const client = new Discord.Client();
 
-client.on("ready", () => {client.user.setActivity("Watching over the server")})
+client.on("ready", () => {client.user.setActivity("&help")})
 //=>console.log(`${client.user.tag} is online!`)
 client.on("message", async message => {
   //if(message.author.bot) return;
@@ -60,7 +60,7 @@ client.on("message", async message => {
     if(!message.content.startsWith(config.prefix)) return;
 
     if(command === "help"){
-      message.channel.send('Bot in development, help command will be available later!')
+      message.channel.send('Bot in development, help command will be available later!\nCurrent commands: !verify, !hug, !test aliases, !stats')
     }
 
     if(command === "test"){
