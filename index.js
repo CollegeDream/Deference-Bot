@@ -42,8 +42,17 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
+async function getOnlineStatus(username){
+  return fetch(`https://api.slothpixel.me/api/players/${username}/status`)
+  .then(result => result.json())
+  .then(({playerStatus}) => {
+    return playerStatus
+  }).catch(e=>null);
+}
 
-const Discord = require('discord.js')
+
+const Discord = require('discord.js');
+const { measureMemory } = require("vm");
 
 const client = new Discord.Client();
 
@@ -239,9 +248,10 @@ client.on("message", async message => {
       const player = await getPlayer(username);
       const bedwarsLevel = player.achievements.bedwars_level;
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
-
+      const player_status = await getOnlineStatus(username);
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
       message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`);
+      message.channel.send(`Online Status: ${player_status.game.type}`)
     }
 })
 
