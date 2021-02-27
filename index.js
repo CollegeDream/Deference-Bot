@@ -52,16 +52,20 @@ client.on("ready", () => {client.user.setActivity("Watching over the server")})
 client.on("message", async message => {
   //if(message.author.bot) return;
   
+
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
-    
+
     if(command === "test"){
       if(!args.length){
         return message.channel.send('no argument provided');
+      } else if (args[0] = "stats"){
+        const IGN = args[1];
+        message.channel.send(IGN);
       }
-      message.channel.send(`Command: ${command}\nArguemnts: ${args}`);
+      
     }
     
     if(command === "hug"){
