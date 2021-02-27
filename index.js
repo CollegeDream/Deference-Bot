@@ -261,7 +261,7 @@ client.on("message", async message => {
       const status = await getOnlineStatus(username);
       message.channel.send(`Online status: ${status.type}`)
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
-      message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`)
+      message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
     }
 })
 
