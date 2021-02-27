@@ -70,8 +70,8 @@ client.on("message", async message => {
         if(!args[1]){
           message.channel.send(`Provide a username, ${message.author.toString()}`)
         } else if(args[1] === "collegedream"){
-          return;
-        }  else {
+          return message.channel.send('.')
+        } else {
           const IGN = args[1];
           const playerUUID = await getUUID(IGN);
           if(!playerUUID){
