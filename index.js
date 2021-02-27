@@ -45,8 +45,8 @@ async function getLinkedDiscord(username){
 async function getOnlineStatus(username){
   return fetch(`https://api.slothpixel.me/api/players/${username}/status`)
   .then(result => result.json())
-  .then(({playerstatus}) => {
-    return game
+  .then(({game}) => {
+    return playerStatus
   }).catch(e=>console.log(e));
 };
 
