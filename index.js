@@ -66,8 +66,11 @@ client.on("message", async message => {
         if(!args[1]){
           message.channel.send(`Provide a username, ${message.author.toString()}`)
         } else {
-        const IGN = args[1];
-        message.channel.send(IGN);
+          const IGN = args[1];
+          const playerUUID = await getUUID(IGN);
+          const player = await getPlayer(IGN);
+
+          message.channel.send(`Bedwars stars: ${player.achievements.bedwars_level}`);
         }
       }
       
