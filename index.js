@@ -249,7 +249,7 @@ client.on("message", async message => {
       const bedwarsLevel = player.achievements.bedwars_level;
       
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
-      const player = await getPlayer(username)
+      const playerObject = await getPlayer(username)
       const player_status = await getOnlineStatus(player);
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
       message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level}`);
