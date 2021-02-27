@@ -252,10 +252,10 @@ client.on("message", async message => {
       //const playerObject = await getPlayer(username)
       async function getOnlineStatus(username){
         const response = await fetch(`https://api.slothpixel.me/api/players/${username}/status`)
-        //const data = await response.json();
+        const data = await response.json();
         //const {game} = data;
         //let gameType = game.type;
-        message.channel.send(`Game type: ${await response.json().game.type}`)
+        message.channel.send(`Game type: ${data.game.type}`)
 
       }
       getOnlineStatus(username);
