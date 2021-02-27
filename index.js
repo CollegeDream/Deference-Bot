@@ -203,7 +203,7 @@ client.on("message", async message => {
             embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
             message.channel.send(embed_verified)
             message.channel.send(`Display Name: ${player.displayname} (these are for testing)`)
-            var myArray = layer.achievementsOneTime;
+            var myArray = player.knownAliases;
             for(var i = 0; i < myArray.length; i++){
               message.channel.send(`${myArray[i]}\n`);
             }
