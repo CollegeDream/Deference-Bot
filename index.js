@@ -54,10 +54,9 @@ client.on("message", async message => {
   
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
-    let command = args.shift()
+    //const command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
-    command = message.content.toLowerCase();
-    if(command === "hug"){
+    if(message.content.toLowerCase() === "hug"){
       let replies = ["You are wonderful!", 
         "You are enough!",
         "You are loved!",
