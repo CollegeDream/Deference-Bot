@@ -56,6 +56,14 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).split(/ +/g)
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
+    
+    if(command === "test"){
+      if(!args.length){
+        retrun message.channel.send('no argument provided');
+      }
+      message.channel.send(`Command: ${command}\nArguemnts: ${args}`);
+    }
+    
     if(command === "hug"){
       let replies = ["You are wonderful!", 
         "You are enough!",
