@@ -69,7 +69,7 @@ client.on("message", async message => {
       } else if (args[0] === "aliases"){
         if(!args[1]){
           message.channel.send(`Provide a username, ${message.author.toString()}`)
-        } else if(args[1] === "collegedream"){
+        } else if(args[1].toLowerCase() === "collegedream"){
           return message.channel.send('.')
         } else {
           const IGN = args[1];
