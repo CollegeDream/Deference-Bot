@@ -69,7 +69,7 @@ client.on("message", async message => {
           const IGN = args[1];
           const playerUUID = await getUUID(IGN);
           const player = await getPlayer(IGN);
-
+          message.channel.send('Player\'s past names:\n);
           var myArray = player.knownAliases;
           for(var i = 0; i < myArray.length; i++){
             message.channel.send(`${myArray[i]}\n`);
