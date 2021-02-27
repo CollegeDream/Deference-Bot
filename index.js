@@ -63,8 +63,12 @@ client.on("message", async message => {
       if(!args.length){
         return message.channel.send('no argument provided');
       } else if (args[0] = "stats"){
+        if(!args[1]){
+          message.channel.send(`Provide a username, ${taggedUser.username}`)
+        } else {
         const IGN = args[1];
         message.channel.send(IGN);
+        }
       }
       
     }
