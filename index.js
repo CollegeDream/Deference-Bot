@@ -60,7 +60,7 @@ client.on("message", async message => {
     if(!message.content.startsWith(config.prefix)) return;
 
     if(command === "help"){
-      message.channel.send('Bot in development, help command will be available later!\nCurrent commands: !verify, !hug, !test aliases, !stats')
+      message.channel.send('Bot in development, help command will be available later!\nCurrent commands: !verify\n!hug\n!test aliases\n!stats')
     }
 
     if(command === "test"){
