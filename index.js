@@ -54,7 +54,7 @@ client.on("message", async message => {
   
   if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).split(/ +/g)
-    const command = args.shift()
+    let command = args.shift()
     if(!message.content.startsWith(config.prefix)) return;
     command = message.content.toLowerCase();
     if(command === "hug"){
