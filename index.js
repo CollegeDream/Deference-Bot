@@ -92,7 +92,7 @@ client.on("message", async message => {
           var myArray = player.knownAliases;
           function displayAliases(myArray){
             message.channel.send('Names will be sent soon')
-            let newArray;
+            let newArray = [];
             let myPromise = new Promise((resolve, reject) => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
