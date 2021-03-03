@@ -100,7 +100,7 @@ client.on("message", async message => {
               if(!newArray){
                 resolve();
               } else {
-              reject(error);
+                reject('nothing to see here');
               }
             })
             
@@ -111,7 +111,7 @@ client.on("message", async message => {
               message.channel.send(newArray.join('\n'))
             })
             .catch((error) => {
-              console.log(error);
+              message.channel.send(error);
             })
           }
           displayAliases(myArray);
