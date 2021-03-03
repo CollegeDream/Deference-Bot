@@ -97,8 +97,11 @@ client.on("message", async message => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-              if(!newArray){
-                resolve();
+              if(newArray){
+                message.channel.send('names will be sent in 10 seconds')
+                setTimeout(() => {
+                  resolve();
+                }, 10000);
               } else {
                 reject('nothing to see here');
               }
