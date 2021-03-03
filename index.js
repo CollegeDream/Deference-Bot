@@ -53,6 +53,7 @@ async function getOnlineStatus(username){
 
 const Discord = require('discord.js');
 const { measureMemory } = require("vm");
+const { rejects } = require("assert");
 const client = new Discord.Client();
 
 client.on("ready", () => {client.user.setActivity("&help")})
@@ -88,7 +89,24 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
-            message.channel.send(myArray.join('\n'))
+          function displayAliases(myArray){
+            message.channel.send('Names will be sent soon')
+            let newArray;
+            let promise = new Promise((resolve, reject) => {
+              for(var i = 0; i <= myArray.length; i++){
+                newArray[i] = myArray[i];
+              }
+            })
+            promise.then(() => {
+              message.channel.send('sending the names!')
+            })
+            .then(() => {
+              message.channel.send(newArray.join('\n'))
+            })
+            .catch(() => {
+              console.log('error');
+            })
+          }
           
         }
       }
