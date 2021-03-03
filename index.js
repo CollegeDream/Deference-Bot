@@ -90,13 +90,11 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
-          function displayAliases(myArray){
             message.channel.send('Names will be sent soon')
             let newArray = [];
             let myPromise = new Promise((resolve, reject) => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
-                message.channel.send(`${newArray[i - 1]}\n`)
               }
                 resolve();
                 reject('nothing to see here');
@@ -104,16 +102,13 @@ client.on("message", async message => {
             })
             
             myPromise.then(() => {
-              message.channel.send('complete!')
+              message.channel.send(myArray.join('\n'))
             })
-            /*.then(() => {
-              message.channel.send(newArray.join('\n'))
-            })*/
             .catch((error) => {
               message.channel.send(error);
             })
-          }
-          displayAliases(myArray);
+          
+
         }
       }
       }
