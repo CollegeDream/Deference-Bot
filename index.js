@@ -96,23 +96,19 @@ client.on("message", async message => {
             let myPromise = new Promise((resolve, reject) => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
+                message.channel.send(`${newArray[i]}\n`)
               }
-              if(newArray){
-                message.channel.send('names will be sent in 10 seconds')
-                setTimeout(() => {
-                  resolve();
-                }, 10000);
-              } else {
+                resolve();
                 reject('nothing to see here');
-              }
+              
             })
             
             myPromise.then(() => {
-              message.channel.send('sending the names!')
+              message.channel.send('complete!')
             })
-            .then(() => {
+            /*.then(() => {
               message.channel.send(newArray.join('\n'))
-            })
+            })*/
             .catch((error) => {
               message.channel.send(error);
             })
