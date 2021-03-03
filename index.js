@@ -97,7 +97,7 @@ client.on("message", async message => {
                 newArray[i] = myArray[i];
               }
             })
-            promise.then(() => {
+            .then(() => {
               message.channel.send('sending the names!')
             })
             .then(() => {
