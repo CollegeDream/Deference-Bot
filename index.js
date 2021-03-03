@@ -107,7 +107,7 @@ client.on("message", async message => {
               console.log('error');
             })
           }
-          
+          displayAliases(myArray);
         }
       }
       }
