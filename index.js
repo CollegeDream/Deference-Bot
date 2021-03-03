@@ -53,7 +53,6 @@ async function getOnlineStatus(username){
 
 const Discord = require('discord.js');
 const { measureMemory } = require("vm");
-
 const client = new Discord.Client();
 
 client.on("ready", () => {client.user.setActivity("&help")})
@@ -89,9 +88,8 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
-          for(var i = 0; i < myArray.length; i++){
-            message.channel.send(`${myArray[i]}\n`);
-          }
+            message.channel.send(myArray.join('\n'))
+          
         }
       }
       }
@@ -141,10 +139,6 @@ client.on("message", async message => {
         .setThumbnail(`https://visage.surgeplay.com/full/${playerUUID}?size=240`)
         .setTimestamp()
         .setFooter('Guarding the server\'s gate')
-        
-        /*var str1 = "Update your tag from " + linkedAccount;
-        var str2 = " to " + message.author.tag;
-        var str3 = str1.concat(str2);*/
       
         const embed_failed = new Discord.MessageEmbed()
         .setColor('#fc0303')
@@ -265,7 +259,5 @@ client.on("message", async message => {
     }
 })
 
-
-// gets token from token.txt file and logs in with it.
 //const token = fs.readFileSync(__dirname+"/./token.txt").toString()
 client.login(littleKey)
