@@ -54,6 +54,7 @@ async function getOnlineStatus(username){
 const Discord = require('discord.js');
 const { measureMemory } = require("vm");
 const { rejects } = require("assert");
+const { error } = require("console");
 const client = new Discord.Client();
 
 client.on("ready", () => {client.user.setActivity("&help")})
@@ -96,16 +97,18 @@ client.on("message", async message => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-            });
-            myPromise
-            .then(() => {
+              resolve();
+              reject(error);
+            })
+            
+            myPromise.then(() => {
               message.channel.send('sending the names!')
             })
             .then(() => {
               message.channel.send(newArray.join('\n'))
             })
-            .catch(() => {
-              console.log('error');
+            .catch((error) => {
+              console.log(error);
             })
           }
           displayAliases(myArray);
