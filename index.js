@@ -96,7 +96,7 @@ client.on("message", async message => {
             let myPromise = new Promise((resolve, reject) => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
-                message.channel.send(`${newArray[i]}\n`)
+                message.channel.send(`${newArray[i - 1]}\n`)
               }
                 resolve();
                 reject('nothing to see here');
