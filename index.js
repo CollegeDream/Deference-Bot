@@ -104,7 +104,7 @@ client.on("message", async message => {
           
           await new Promise((resolve, reject)=>{
             // wait for 50 ms.
-            setTimeout(function(){resolve(msg)}, 5000);
+            setTimeout(function(){resolve(msg)}, 2500);
           }).then((msg) => msg.edit('Sending the name!'));
         
             return myArray;
