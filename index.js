@@ -139,7 +139,8 @@ client.on("message", async message => {
         "Our community is better when you're in it!",
         "I bet you do crossword puzzles in ink! (you're confident)",
         `${message.author.toString()}, I'm proud of you!`,
-        "You melt my heart whenever I see you!"
+        "You melt my heart whenever I see you!",
+        "You make me gay! (gay as in happy ofc)"
 
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
