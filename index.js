@@ -104,7 +104,7 @@ client.on("message", async message => {
             .then(() => await printAliases(myArray));
           }
           message.channel.send('Sending!')
-          .then(fawait printAliases(myArray));
+          .then(await printAliases(myArray));
 
       }
       }
