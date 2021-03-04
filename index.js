@@ -96,21 +96,20 @@ client.on("message", async message => {
               msg.edit('Estimated time: 2 seconds');
               }, 2000);
           })
-          function printAliases(){
-              function saveArray(){
-                let newArray = player.knownAliases;
-              }
-              let myPromise = saveArray();
-              myPromise.then(resolved(newArray), rejected);
+          async function printAliases(myArray){
+            var newArray = [];
+            for(let i = 0; i < myArray.length; i++){
+              newArray[i] = myArray[i];
             }
+            return newArray;
+          }
+          function sending(){
+            let thirdArray = await printAliases(myArray);
+            message.channel.send('Sending the names!');
+            message.channel.send(thirdArray.join('\n'))
+          }
           
-            function resolved(newArray){
-              message.channel.send(newArray.join('\n'))
-            }
-            function rejected(){
-              message.channel.send('rejected')
-            }
-          printAliases();
+
       }
       }
       
