@@ -96,15 +96,15 @@ client.on("message", async message => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-                resolve();
+                //resolve();
                 reject('nothing to see here');
               
             })
             
-            myPromise.then(() => {
+            /*myPromise.then(() => {
               message.channel.send(myArray.join('\n'))
-            })
-            .catch((error) => {
+            })*/
+            myPromise.catch((error) => {
               message.channel.send(error);
             })
           
