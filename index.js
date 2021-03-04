@@ -84,9 +84,9 @@ client.on("message", async message => {
         } else {
           const IGN = args[1];
           const playerUUID = await getUUID(IGN);
-          if(!playerUUID){
-            message.channel.send('Could not find a player with this IGN');
-          } else {
+          //if(!playerUUID){
+          //  message.channel.send('Could not find a player with this IGN');
+         // } else {
           const player = await getPlayer(IGN);
           message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
@@ -112,7 +112,7 @@ client.on("message", async message => {
             })
           
 
-        }
+        
       }
       }
       
