@@ -96,18 +96,14 @@ client.on("message", async message => {
               msg.edit('Estimated time: 2 seconds');
               }, 2000);
           })
-          function printAliases(){
-              let myPromise = player.knownAliases;
-              myPromise.then(resolved, rejected);
+          async function printAliases(myArray){
+            for(let i = 0; i < myArray.length; i++){
+              message.channel.send(`${myArray[i]}\n`)
             }
-          
-            function resolved(){
-              message.channel.send(myPromise.join('\n'))
-            }
-            function rejected(){
-              message.channel.send('rejected')
-            }
-          printAliases();
+            message.channel.send('Sending!')
+            .then(() => printAliases(myArray));
+          }
+
       }
       }
       
