@@ -103,7 +103,6 @@ client.on("message", async message => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-                reject()
             })
             
             myPromise.then((message) => {
