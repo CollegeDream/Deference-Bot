@@ -96,16 +96,19 @@ client.on("message", async message => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-                //resolve();
+                resolve();
                 reject();
               
             })
             
-            //myPromise.then(() => {
-              //message.channel.send(myArray.join('\n'))
-           // })
+            myPromise.then(() => {
+              setTimeout(() => {
+                message.channel.send(myArray.join('\n'))
+              }, 10000);
+              
+            })
             myPromise.catch(() => {
-              console.error();
+              console.error('error');
             })
           
 
