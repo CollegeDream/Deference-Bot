@@ -101,7 +101,7 @@ client.on("message", async message => {
           })*/
           await new Promise((resolve, reject)=>{
             // wait for 50 ms.
-            setTimeout(function(){resolve(msg)}, 2000);
+            setTimeout(function(){resolve(msg)}, 5000);
           }).then((msg) => msg.edit('Estimated time: 2 seconds'));
         
             return myArray;
