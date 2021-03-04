@@ -97,11 +97,14 @@ client.on("message", async message => {
               }, 2000);
           })
           async function printAliases(myArray){
-            var newArray = [];
-            for(let i = 0; i < myArray.length; i++){
-              newArray[i] = myArray[i];
-            }
-            return newArray;
+              var myArray = player.knownAliases;
+              message.channel.send('Calculating...')
+            .then((msg)=>{
+              setTimeout(function(){
+                msg.edit('Estimated time: 2 seconds');
+                }, 2000);
+            })
+            return myArray;
           }
           async function sending(){
             let thirdArray = await printAliases(myArray);
