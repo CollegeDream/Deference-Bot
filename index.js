@@ -99,7 +99,7 @@ client.on("message", async message => {
                 newArray[i] = myArray[i];
               }
                 resolve();
-                reject();
+                reject('rejected');
               
             })
             
@@ -109,8 +109,8 @@ client.on("message", async message => {
               }, 10000);
               
             })
-            .catch(() => {
-              console.error('error');
+            .catch((message) => {
+              console.error(message);
             })
           
 
