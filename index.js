@@ -109,7 +109,7 @@ client.on("message", async message => {
               }, 10000);
               
             })
-            myPromise.catch(() => {
+            .catch(() => {
               console.error('error');
             })
           
