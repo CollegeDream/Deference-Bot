@@ -99,16 +99,16 @@ client.on("message", async message => {
               msg.edit('Estimated time: 2 seconds');
               }, 2000);
           })*/
+          msg.edit('Estimated time: 2 seconds')
           await new Promise((resolve, reject)=>{
             // wait for 50 ms.
             setTimeout(function(){resolve(msg)}, 5000);
-          }).then((msg) => msg.edit('Estimated time: 2 seconds'));
+          }).then((msg) => msg.edit('Sending the name!'));
         
             return myArray;
           }
           async function sending(){
             let thirdArray = await printAliases(myArray);
-            message.channel.send('Sending the names!');
             message.channel.send(thirdArray.join('\n'))
           }
 
