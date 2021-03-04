@@ -88,29 +88,31 @@ client.on("message", async message => {
           //  message.channel.send('Could not find a player with this IGN');
          // } else {
           const player = await getPlayer(IGN);
-          message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
-            message.channel.send('Names will be sent soon')
+            
             var newArray = [];
             let myPromise = new Promise((resolve, reject) => {
               var newArray = [];
               var myArray = player.knownAliases;
+              message.channel.send('Calculating...')
+              .then((msg)=>{
+                setTimeout(function(){
+                  msg.edit('Estimated time: 2 seconds');
+                }, 2000);
+              })
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
                 reject('rejected')
-                resolve('resolved');
-                
-              
             })
             
             myPromise.then((message) => {
              // setTimeout(() => {
                // message.channel.send(myArray.join('\n'))
               //}, 10000);
-              message.channel.send(message)
-            }).catch((message) => {
-              console.error(message);
+              message.channel.send('resolved')
+            }).catch(() => {
+              message.channel.send('rejected');
             })
 
           
