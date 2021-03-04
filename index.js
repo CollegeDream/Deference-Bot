@@ -96,7 +96,7 @@ client.on("message", async message => {
             let msg = message.channel.send('Calculating...')
             .then((msg)=>{
               msg.edit('Estimated time: 2 seconds!')
-            }
+            })
           /*.then((msg)=>{
             setTimeout(function(){
               msg.edit('Estimated time: 2 seconds');
