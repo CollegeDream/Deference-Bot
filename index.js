@@ -89,16 +89,26 @@ client.on("message", async message => {
          // } else {
           const player = await getPlayer(IGN);
           var myArray = player.knownAliases;
-          
+            
+          message.channel.send('Calculating...')
+          .then((msg)=>{
+            setTimeout(function(){
+              msg.edit('Estimated time: 2 seconds');
+              }, 2000);
+          })
           async function printAliases(myArray){
             var myArray = player.knownAliases;
-            message.channel.send('Calculating...')
-            await new Promise((resolve, reject)=>{
-              // wait for 50 ms.
-              setTimeout(function(){resolve()}, 2000);
-            }).then((msg)=>{msg.edit('Estimated time: 2 seconds')});
-            
-            var myArray = player.knownAliases;
+            let msg = message.channel.send('Calculating...');
+          /*.then((msg)=>{
+            setTimeout(function(){
+              msg.edit('Estimated time: 2 seconds');
+              }, 2000);
+          })*/
+          await new Promise((resolve, reject)=>{
+            // wait for 50 ms.
+            setTimeout(function(){resolve()}, 2000);
+          }).then((msg) => msg.edit('Estimated time: 2 seconds'));
+        
             return myArray;
           }
           async function sending(){
