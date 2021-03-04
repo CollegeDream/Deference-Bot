@@ -91,19 +91,19 @@ client.on("message", async message => {
           message.channel.send('Player\'s past names:\n');
           var myArray = player.knownAliases;
             message.channel.send('Names will be sent soon')
-            var newArray = new Array(5);
+            var newArray = [];
             let myPromise = new Promise((resolve, reject) => {
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
-                resolve();
-                reject('nothing to see here');
+                //resolve();
+                reject();
               
             })
             
-            myPromise.then(() => {
-              message.channel.send(myArray.join('\n'))
-            })
+            //myPromise.then(() => {
+              //message.channel.send(myArray.join('\n'))
+           // })
             myPromise.catch((error) => {
               message.channel.send(error);
             })
