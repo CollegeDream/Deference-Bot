@@ -103,11 +103,13 @@ client.on("message", async message => {
             }
             return newArray;
           }
-          function sending(){
+          async function sending(){
             let thirdArray = await printAliases(myArray);
             message.channel.send('Sending the names!');
             message.channel.send(thirdArray.join('\n'))
           }
+
+          await sending();
           
 
       }
