@@ -94,9 +94,8 @@ client.on("message", async message => {
           async function printAliases(myArray){
             var myArray = player.knownAliases;
             let msg = message.channel.send('Calculating...')
-            .then((msg)=>{
-              msg.edit('Estimated time: 2 seconds!')
-            })
+
+
           /*.then((msg)=>{
             setTimeout(function(){
               msg.edit('Estimated time: 2 seconds');
