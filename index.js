@@ -104,8 +104,8 @@ client.on("message", async message => {
             //myPromise.then(() => {
               //message.channel.send(myArray.join('\n'))
            // })
-            myPromise.catch((error) => {
-              message.channel.send(error);
+            myPromise.catch(() => {
+              console.error();
             })
           
 
