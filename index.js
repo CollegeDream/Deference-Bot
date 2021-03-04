@@ -98,6 +98,7 @@ client.on("message", async message => {
                 msg.edit('Estimated time: 2 seconds');
                 }, 2000);
             })
+            var myArray = player.knownAliases;
             return myArray;
           }
           async function sending(){
