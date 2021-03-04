@@ -108,10 +108,10 @@ client.on("message", async message => {
                 message.channel.send(myArray.join('\n'))
               }, 10000);
               
-            })
-            .catch((message) => {
+            }).catch((message) => {
               console.error(message);
             })
+
           
 
         
