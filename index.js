@@ -93,6 +93,8 @@ client.on("message", async message => {
             message.channel.send('Names will be sent soon')
             var newArray = [];
             let myPromise = new Promise((resolve, reject) => {
+              var newArray = [];
+              var myArray = player.knownAliases;
               for(var i = 0; i <= myArray.length; i++){
                 newArray[i] = myArray[i];
               }
