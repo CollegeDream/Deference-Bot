@@ -109,7 +109,7 @@ client.on("message", async message => {
              // setTimeout(() => {
                // message.channel.send(myArray.join('\n'))
               //}, 10000);
-              message.channel.send('resolved')
+              message.channel.send(myArray.join('\n'))
             }).catch(() => {
               message.channel.send('rejected');
             })
