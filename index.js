@@ -262,6 +262,7 @@ client.on("message", async message => {
       const bedwarsLevel = player.achievements.bedwars_level;
       
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
+      var joinedDate = new Date(player.firstLogin);
       //const playerObject = await getPlayer(username)
       /*async function getOnlineStatus(username){
         const response = await fetch(`https://api.slothpixel.me/api/players/${username}/status`)
@@ -274,6 +275,7 @@ client.on("message", async message => {
       const status = await getOnlineStatus(username);
       message.channel.send(`Online status: ${status.type}`)
       message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
+      message.channel.send(`First joined: ${joinedDate}`);
       message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
     }
 })
