@@ -107,10 +107,7 @@ client.on("message", async message => {
             function rejected(){
               message.channel.send('rejected')
             }
-
-          
-
-        
+          printAliases();
       }
       }
       
