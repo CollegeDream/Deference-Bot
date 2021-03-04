@@ -93,13 +93,16 @@ client.on("message", async message => {
 
           async function printAliases(myArray){
             var myArray = player.knownAliases;
-            let msg = message.channel.send('Calculating...');
+            let msg = message.channel.send('Calculating...')
+            .then((msg)=>{
+              msg.edit('Estimated time: 2 seconds!')
+            }
           /*.then((msg)=>{
             setTimeout(function(){
               msg.edit('Estimated time: 2 seconds');
               }, 2000);
           })*/
-          msg.edit('Estimated time: 2 seconds')
+          
           await new Promise((resolve, reject)=>{
             // wait for 50 ms.
             setTimeout(function(){resolve(msg)}, 5000);
