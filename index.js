@@ -89,13 +89,7 @@ client.on("message", async message => {
          // } else {
           const player = await getPlayer(IGN);
           var myArray = player.knownAliases;
-            
-          message.channel.send('Calculating...')
-          .then((msg)=>{
-            setTimeout(function(){
-              msg.edit('Estimated time: 2 seconds');
-              }, 2000);
-          })
+          
           async function printAliases(myArray){
               var myArray = player.knownAliases;
               message.channel.send('Calculating...')
