@@ -90,34 +90,23 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           var myArray = player.knownAliases;
             
-            var newArray = [];
-            let myPromise = new Promise((resolve, reject) => {
-              var newArray = [];
-              var myArray = player.knownAliases;
-              message.channel.send('Calculating...')
-              .then((msg)=>{
-                setTimeout(function(){
-                  msg.edit('Estimated time: 2 seconds');
-                }, 2000);
-              })
-              for(var i = 0; i <= myArray.length; i++){
-                newArray[i] = myArray[i];
-              }
-              if(myArray){
-                resolve();
-              } else {
-                reject();
-              }
-            })
-            
-            myPromise.then((message) => {
-             // setTimeout(() => {
-               // message.channel.send(myArray.join('\n'))
-              //}, 10000);
-              message.channel.send(myArray.join('\n'))
-            }).catch(() => {
-              message.channel.send('rejected');
-            })
+          message.channel.send('Calculating...')
+          .then((msg)=>{
+            setTimeout(function(){
+              msg.edit('Estimated time: 2 seconds');
+              }, 2000);
+          })
+          function printAliases(){
+              let myPromise = player.knownAliases;
+              myPromise.then(resolved, rejected);
+            }
+          
+            function resolved(){
+              message.channel.send(myPromise.join('\n'))
+            }
+            function rejected(){
+              message.channel.send('rejected')
+            }
 
           
 
