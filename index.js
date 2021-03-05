@@ -94,7 +94,7 @@ client.on("message", async message => {
           async function printAliases(myArray){
             var myArray = player.knownAliases;
             let msg = message.channel.send('Calculating...')
-
+            let msg2 = msg;
 
           /*.then((msg)=>{
             setTimeout(function(){
@@ -103,10 +103,13 @@ client.on("message", async message => {
           })*/
           
           await new Promise((resolve, reject)=>{
-            // wait for 50 ms.
+            setTimeout(function(){resolve(msg)}, 500);
+          }).then((msg) => msg.edit('Estimated time: 2 seconds'))
+          
+          await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 2500);
-          }).then((msg) => msg.edit('Sending the name!'));
-        
+          }).then((msg) => msg.edit('Sending the name!'))
+
             return myArray;
           }
           async function sending(){
