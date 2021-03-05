@@ -57,7 +57,7 @@ const { rejects } = require("assert");
 const { error } = require("console");
 const client = new Discord.Client();
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
   member.guild.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
 });
 
