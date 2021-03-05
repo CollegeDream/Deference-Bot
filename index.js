@@ -58,8 +58,7 @@ const { error } = require("console");
 const client = new Discord.Client();
 
 client.on('guildMemberAdd', member => {
-  let server = member.guild.get(config.targetGuild);
-  member.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
+  member.guild.channels.cache.get(config.welcomeChannel).send(`Welcome, ${member}`); 
 });
 
 client.on("ready", () => {client.user.setActivity("&help")})
