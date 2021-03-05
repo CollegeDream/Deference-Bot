@@ -59,7 +59,7 @@ const client = new Discord.Client();
 
 client.on('guildMemberAdd', member => {
   let server = member.guild.get(config.targetGuild);
-  member.server.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
+  member.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
 });
 
 client.on("ready", () => {client.user.setActivity("&help")})
