@@ -104,10 +104,7 @@ client.on("message", async message => {
           await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 500);
           }).then((msg) => msg.edit('Estimated time: 2 seconds'))
-          
-          await new Promise((resolve, reject)=>{
-            setTimeout(function(){resolve(msg)}, 2000);
-          }).then((msg) => msg.edit('Sending the name!'))
+
 
           await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 20);
@@ -117,6 +114,12 @@ client.on("message", async message => {
           }
           async function sending(){
             let thirdArray = await printAliases(myArray);
+            await new Promise((resolve, reject)=>{
+              resolve(msg);
+            }).then((msg) => msg.edit('Sending the name!'))
+            await new Promise((resolve, reject)=>{
+              setTimeout(function(){resolve(msg)}, 20);
+            }).then((msg) => msg.delete())
             message.channel.send(thirdArray.join('\n'))
           }
 
