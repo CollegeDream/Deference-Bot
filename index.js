@@ -90,15 +90,14 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           var myArray = player.knownAliases;
             
-          let msg2;
+          let msg;
           async function printAliases(myArray){
             var myArray = player.knownAliases;
-            let msg = message.channel.send('Calculating...')
+            msg = message.channel.send('Calculating...')
           
           await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 500);
-          }).then((msg) => msg.edit('Estimated time: 2 seconds'))
-            msg2 = msg;
+          }).then((msg) => msg.edit('Estimated time: 2 seconds'));
             return myArray;
           }
 
@@ -107,11 +106,11 @@ client.on("message", async message => {
             
             let thirdArray = await printAliases(myArray);
             await new Promise((resolve, reject)=>{
-              resolve(msg2);
-            }).then((msg2) => msg2.edit('Sending the name!'))
+              resolve(msg);
+            }).then((msg) => msg.edit('Sending the name!'))
             await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg2)}, 30);
-            }).then((msg2) => msg2.delete())
+              setTimeout(function(){resolve(msg)}, 1000);
+            }).then((msg) => msg.delete())
             message.channel.send(thirdArray.join('\n'))
           }
 
