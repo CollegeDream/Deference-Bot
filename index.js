@@ -93,11 +93,11 @@ client.on("message", async message => {
           let msg;
           async function printAliases(myArray){
             var myArray = player.knownAliases;
-            msg = message.channel.send('Calculating...')
+            msg = message.channel.send('\'Calculating...\'')
           
           await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 1000);
-          }).then((msg) => msg.edit('Estimated time: 2 seconds'));
+          }).then((msg) => msg.edit('\'Estimated time: 2 seconds\''));
             return myArray;
           }
 
@@ -107,9 +107,9 @@ client.on("message", async message => {
             let thirdArray = await printAliases(myArray);
             await new Promise((resolve, reject)=>{
               setTimeout(function(){resolve(msg)}, 2000);
-            }).then((msg) => msg.edit('Sending the name!'))
+            }).then((msg) => msg.edit('\'Sending the name!\n'))
             await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg)}, 100);
+              setTimeout(function(){resolve(msg)}, 150);
             }).then((msg) => msg.delete())
             message.channel.send(thirdArray.join('\n'))
           }
