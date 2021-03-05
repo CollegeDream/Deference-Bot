@@ -58,7 +58,7 @@ const { error } = require("console");
 const client = new Discord.Client();
 
 client.on('guildMemberAdd', member => {
-  let server = memeber.guild.get(config.targetGuild);
+  let server = member.guild.get(config.targetGuild);
   member.server.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
 });
 
