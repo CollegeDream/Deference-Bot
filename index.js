@@ -90,36 +90,28 @@ client.on("message", async message => {
           const player = await getPlayer(IGN);
           var myArray = player.knownAliases;
             
-
+          let msg2;
           async function printAliases(myArray){
             var myArray = player.knownAliases;
             let msg = message.channel.send('Calculating...')
-
-          /*.then((msg)=>{
-            setTimeout(function(){
-              msg.edit('Estimated time: 2 seconds');
-              }, 2000);
-          })*/
           
           await new Promise((resolve, reject)=>{
             setTimeout(function(){resolve(msg)}, 500);
           }).then((msg) => msg.edit('Estimated time: 2 seconds'))
-
-
-          await new Promise((resolve, reject)=>{
-            setTimeout(function(){resolve(msg)}, 20);
-          }).then((msg) => msg.delete())
-
+            msg2 = msg;
             return myArray;
           }
+
+          
           async function sending(){
+            
             let thirdArray = await printAliases(myArray);
             await new Promise((resolve, reject)=>{
-              resolve(msg);
-            }).then((msg) => msg.edit('Sending the name!'))
+              resolve(ms2);
+            }).then((msg2) => msg2.edit('Sending the name!'))
             await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg)}, 20);
-            }).then((msg) => msg.delete())
+              setTimeout(function(){resolve(msg2)}, 30);
+            }).then((msg2) => msg2.delete())
             message.channel.send(thirdArray.join('\n'))
           }
 
