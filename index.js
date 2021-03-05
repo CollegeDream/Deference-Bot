@@ -57,6 +57,10 @@ const { rejects } = require("assert");
 const { error } = require("console");
 const client = new Discord.Client();
 
+bot.on('guildMemberAdd', member => {
+  member.guild.channels.get(config.welcomeChannel).send(`Welcome, ${member}`); 
+});
+
 client.on("ready", () => {client.user.setActivity("&help")})
 //=>console.log(`${client.user.tag} is online!`)
 client.on("message", async message => {
