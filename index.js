@@ -109,7 +109,7 @@ client.on("message", async message => {
               setTimeout(function(){resolve(msg)}, 2000);
             }).then((msg) => msg.edit('Sending the name!'))
             await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg)}, 0);
+              setTimeout(function(){resolve(msg)}, 100);
             }).then((msg) => msg.delete())
             message.channel.send(thirdArray.join('\n'))
           }
