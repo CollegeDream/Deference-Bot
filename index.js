@@ -107,7 +107,7 @@ client.on("message", async message => {
             
             let thirdArray = await printAliases(myArray);
             await new Promise((resolve, reject)=>{
-              resolve(ms2);
+              resolve(msg2);
             }).then((msg2) => msg2.edit('Sending the name!'))
             await new Promise((resolve, reject)=>{
               setTimeout(function(){resolve(msg2)}, 30);
