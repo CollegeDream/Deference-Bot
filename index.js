@@ -64,7 +64,7 @@ const client = new Discord.Client({
 client.on("ready", () => {client.user.setActivity("&help")})
 //=>console.log(`${client.user.tag} is online!`)
 client.on('guildMemberAdd', member => {
-  console.log('someone joined');
+  member.guild.channel.cache.get(config.welcomeChannel).send(`Welcome, ${member}`);
 });
 
 client.on("message", async message => {
