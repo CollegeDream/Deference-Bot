@@ -65,7 +65,7 @@ client.on("ready", () => {client.user.setActivity("&help")})
 //=>console.log(`${client.user.tag} is online!`)
 client.on('guildMemberAdd', member => {
   let welcomeChannel = member.guild.channels.cache.get(config.welcomeChannel);
-  //const guild = client.guilds.get(config.targetGuild);
+  const guild = client.guilds.get(config.targetGuild);
   const welcomeEmbed = new Discord.MessageEmbed()
   .setColor('#e31ba7')
   .setTitle('Welcome to Deference!')
