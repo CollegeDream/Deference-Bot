@@ -56,7 +56,7 @@ const { measureMemory } = require("vm");
 const { rejects } = require("assert");
 const { error } = require("console");
 const client = new Discord.Client({
-  ws: { intents: Intents.ALL}
+  intents: allIntents
 });
 
 client.on('guildMemberAdd', member => {
