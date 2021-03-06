@@ -69,10 +69,10 @@ client.on('guildMemberAdd', member => {
   const welcomeEmbed = new Discord.MessageEmbed()
   .setColor('#e31ba7')
   .setTitle('Welcome to Deference!')
-  .setDescription(`Hey ${member}, welcome to Deference's guild Discord server.Checkout <#686071200170246264> for information regarding our guild.\n
+  .setDescription(`Hey ${member}, welcome to Deference's guild Discord server. Checkout <#686071200170246264> for information regarding our guild.\n
   To gain access, use &verify in <#688407471190310958>\n
   To apply, go to <#799876290642706473> and open a ticket.\n
-  We now have ${guild.members.size} members.`)
+  We now have ${guild.memberCount} members.`)
   .setThumbnail(member.user.avatarURL())
   welcomeChannel.send(welcomeEmbed);
   var role = member.guild.roles.cache.find(role => role.id === config.discordMemberRole);
