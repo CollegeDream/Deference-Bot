@@ -59,12 +59,14 @@ const client = new Discord.Client({
   ws: { intents: ['GUILDS', 'GUILD_MESSAGES']}
 });
 
+
+
+client.on("ready", () => {client.user.setActivity("&help")})
+//=>console.log(`${client.user.tag} is online!`)
 client.on('guildMemberAdd', member => {
   console.log('someone joined');
 });
 
-client.on("ready", () => {client.user.setActivity("&help")})
-//=>console.log(`${client.user.tag} is online!`)
 client.on("message", async message => {
   //if(message.author.bot) return;
   
