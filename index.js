@@ -70,7 +70,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('guildMemberRemove', member => {
-  member.guild.channels.cache.get(config.welcomeChannel).send(`${member.username} left the server!`);
+  member.guild.channels.cache.get(config.welcomeChannel).send(`${member.tag} left the server!`);
 });
 
 client.on("message", async message => {
