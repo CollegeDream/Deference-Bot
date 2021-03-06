@@ -72,7 +72,7 @@ client.on('guildMemberAdd', member => {
   Checkout <@#686071200170246264> for information regarding our guild.\n
   To gain access, use &verify in <@#688407471190310958>\n
   To apply, go to <@#799876290642706473> and open a ticket.`)
-  .setThumbnail(member.avatarURL())
+  .setThumbnail(member.user.avatarURL())
   welcomeChannel.send(welcomeEmbed);
   var role = member.guild.roles.cache.find(role => role.id === config.discordMemberRole);
   member.roles.add(role);
