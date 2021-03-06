@@ -68,7 +68,7 @@ client.on('guildMemberAdd', member => {
   const guild = client.guilds.cache.get(config.targetGuild);
   const welcomeEmbed = new Discord.MessageEmbed()
   .setColor('#e31ba7')
-  .setTitle('Welcome to Deference!')
+  .setTitle('Welcome to Deference!🌟')
   .setDescription(`Hey ${member}, welcome to Deference's guild Discord server. Checkout <#686071200170246264> for information regarding our guild.\n
   To gain access, use &verify in <#688407471190310958>\n
   To apply, go to <#799876290642706473> and open a ticket.\n
