@@ -65,6 +65,8 @@ client.on("ready", () => {client.user.setActivity("&help")})
 //=>console.log(`${client.user.tag} is online!`)
 client.on('guildMemberAdd', member => {
   member.guild.channels.cache.get(config.welcomeChannel).send(`Welcome, ${member}`);
+  var role = member.guild.roles.cache.find(role => role.id === "686070734682062919");
+  member.roles.add(role);
 });
 
 client.on("message", async message => {
