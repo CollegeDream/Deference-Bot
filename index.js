@@ -55,7 +55,9 @@ const Discord = require('discord.js');
 const { measureMemory } = require("vm");
 const { rejects } = require("assert");
 const { error } = require("console");
-const client = new Discord.Client();
+const client = new Discord.Client({
+  ws: { intents: Intents.ALL}
+});
 
 client.on('guildMemberAdd', member => {
   console.log('someone joined');
