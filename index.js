@@ -56,7 +56,7 @@ const { measureMemory } = require("vm");
 const { rejects } = require("assert");
 const { error } = require("console");
 const client = new Discord.Client({
-  ws: { intents: ['GUILDS', 'GUILD_MESSAGES']}
+  ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_PRESENCES', 'GUILD_MEMBERS']}
 });
 
 
