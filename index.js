@@ -74,6 +74,7 @@ client.on('guildMemberAdd', member => {
   To apply, go to <#799876290642706473> and open a ticket.\n
   We now have \*\*${guild.memberCount}\*\* members.`)
   .setThumbnail(member.user.avatarURL())
+  welcomeChannel.send(`${member}`);
   welcomeChannel.send(welcomeEmbed);
   var role = member.guild.roles.cache.find(role => role.id === config.discordMemberRole);
   member.roles.add(role);
