@@ -67,7 +67,7 @@ client.on('guildMemberAdd', member => {
   let welcomeChannel = member.guild.channels.cache.get(config.welcomeChannel);
   const guild = client.guilds.cache.get(config.targetGuild);
   const welcomeEmbed = new Discord.MessageEmbed()
-  .setColor('#e31ba7')
+  .setColor('#fc0fb5')
   .setTitle('Welcome to Deference!🌟')
   .setDescription(`Hey ${member}, welcome to Deference's guild Discord server. Checkout <#686071200170246264> for information regarding our guild.\n
   To gain access, use &verify in <#688407471190310958>\n
@@ -306,10 +306,10 @@ client.on("message", async message => {
 
       }*/
       const status = await getOnlineStatus(username);
-      message.channel.send(`Online status: ${status.type}`)
-      message.channel.send(`Network level: ${networkLevel.toFixed(2)}`);
-      message.channel.send(`First joined: ${joinedDate}`);
-      message.channel.send(`Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
+      message.channel.send(`Online status: ${status.type}\n)
+      Network level: ${networkLevel.toFixed(2)}\n}
+      First joined: ${joinedDate}\n
+      Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
     }
 })
 
