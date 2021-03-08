@@ -306,8 +306,8 @@ client.on("message", async message => {
 
       }*/
       const status = await getOnlineStatus(username);
-      message.channel.send(`Online status: ${status.type}\n)
-      Network level: ${networkLevel.toFixed(2)}\n}
+      message.channel.send(`Online status: ${status.type}\n
+      Network level: ${networkLevel.toFixed(2)}\n
       First joined: ${joinedDate}\n
       Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
     }
