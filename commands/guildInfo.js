@@ -51,8 +51,9 @@ module.exports = {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
-                    let expArray = guildMember.expHistory;
-                    message.channel.send(guildMember.expHistory.join('\n'))
+                    for(x in guildMember.expHistory){
+                        message.channel.send(guildMember.expHistory[x]);
+                    }
                 }
             }
         }
