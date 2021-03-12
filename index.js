@@ -112,7 +112,8 @@ client.on("message", async message => {
     }
 
     if(command === "test"){
-      if(!args.length){
+      client.commands.get('alias').execute(message, args);
+      /*if(!args.length){
         return message.channel.send('no argument provided');
       } else if (args[0] === "aliases"){
         if(!args[1]){
@@ -156,7 +157,7 @@ client.on("message", async message => {
           
 
       }
-      }
+      }*/
       
     }
     
