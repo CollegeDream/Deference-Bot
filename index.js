@@ -107,6 +107,11 @@ client.on("message", async message => {
     if(command === "stats"){
       client.commands.get('stats').execute(message, args);
     }
+
+    if(command === "g"){
+      client.commands.get('guildInfo').execute(message, args);
+    }
+
     if(command === "help"){
       message.channel.send('Bot in development, help command will be available later!\nCurrent commands:\n&verify\n&hug\n&test aliases\n&stats')
     }
