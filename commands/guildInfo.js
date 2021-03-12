@@ -47,7 +47,13 @@ module.exports = {
             const playerUUID = await getUUID(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            for (i in guild.members) {
+            async function getExpHistory(username){
+            const response = await fetch(`https://api.slothpixel.me/api/guilds/${username}`)
+            const result = await response.json();
+            let exp = result.members.exp_history;
+            message.channel.send(exp);
+    
+            /* (i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
@@ -55,7 +61,7 @@ module.exports = {
                         message.channel.send(guildMember.expHistory[x]);
                     }
                 }
-            }
+            }*/
         }
     },
 }
