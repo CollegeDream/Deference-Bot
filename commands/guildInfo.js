@@ -51,7 +51,7 @@ module.exports = {
             for(let guildMember in guildMembers){
                 if(guildMember.uuid = playerUUID){
                     //message.channel.send('found player');
-                }
+                } //comment
             }
         }
     },
