@@ -54,7 +54,7 @@ module.exports = {
     name: 'stats',
     description: 'print statistics',
     execute(message, args){
-        
+    (async() => {  
 
         const username = args[0]
         if(!username) return message.reply("You need to say your minecraft username.")
@@ -81,5 +81,6 @@ module.exports = {
         Network level: ${networkLevel.toFixed(2)}\n
         First joined: ${joinedDate}\n
         Bedwars stars:  (this bot is in beta)`)
+    })
     },
 };
