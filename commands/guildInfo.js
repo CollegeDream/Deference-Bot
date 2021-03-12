@@ -51,7 +51,7 @@ module.exports = {
             const response = await fetch(`https://api.slothpixel.me/api/guilds/${username}`)
             const result = await response.json();
             let data = result;
-            let exp = data.members.rank;
+            let exp = data.tag_color;
 
             message.channel.send(exp);
             }
