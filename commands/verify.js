@@ -1,7 +1,7 @@
 const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs")
-const { token, littleKey, port } = require('./config.json');
+
 function getUUID(username) {
         return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
         .then(data => data.json())
