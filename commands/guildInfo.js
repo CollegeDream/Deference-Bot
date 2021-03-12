@@ -55,6 +55,7 @@ module.exports = {
             }
             const expHistory = getExpHistory(username); 
             let i = 0;
+            let b = 2;
            // here is a comment
             
             /* (i in guild.members) {
