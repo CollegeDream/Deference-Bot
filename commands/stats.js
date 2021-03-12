@@ -31,7 +31,7 @@ module.exports = {
         };
         const playerUUID = getUUID(username);
         //const authorID = message.author.id;
-        const player = getPlayer(username);
+        const player = await getPlayer(username);
         //const bedwarsLevel = player.achievements.bedwars_level;
         
         var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
