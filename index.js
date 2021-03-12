@@ -58,7 +58,8 @@ const { error } = require("console");
 const client = new Discord.Client({
   ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_PRESENCES', 'GUILD_MEMBERS']}
 });
-
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 
 client.on("ready", () => {client.user.setActivity("&help")})
@@ -94,6 +95,13 @@ client.on("message", async message => {
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
 
+    for(const file of commandFiles){
+      const command = require(`./commands/${file}`);
+      client.commands.set(command.name, command);
+    }
+    if(command === "stats"){
+      client.commands.get('stats').execute(message, args);
+    }
     if(command === "help"){
       message.channel.send('Bot in development, help command will be available later!\nCurrent commands:\n&verify\n&hug\n&test aliases\n&stats')
     }
@@ -283,7 +291,7 @@ client.on("message", async message => {
       })
     }
 
-    if(command === "stats"){
+    /*if(command === "stats"){
       
       const username = args[0]
       if(!username) return message.reply("You need to say your minecraft username.")
@@ -297,20 +305,20 @@ client.on("message", async message => {
       var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
       var joinedDate = new Date(player.firstLogin);
       //const playerObject = await getPlayer(username)
-      /*async function getOnlineStatus(username){
+      async function getOnlineStatus(username){
         const response = await fetch(`https://api.slothpixel.me/api/players/${username}/status`)
         const data = await response.json();
         //const {game} = data;
         //let gameType = game.type;
         message.channel.send(`Game type: ${data.game.type}`)
 
-      }*/
+      }
       const status = await getOnlineStatus(username);
       message.channel.send(`Online status: ${status.type}\n
       Network level: ${networkLevel.toFixed(2)}\n
       First joined: ${joinedDate}\n
       Bedwars stars: ${player. achievements.bedwars_level} (this bot is in beta)`)
-    }
+    }*/
 })
 
 //const token = fs.readFileSync(__dirname+"/./token.txt").toString()
