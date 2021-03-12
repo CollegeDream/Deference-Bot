@@ -53,9 +53,8 @@ module.exports = {
             let exp = result.members.exp_history;
             message.channel.send(exp);
             }
-            const expHistory = getExpHistory(username); 
-            let i = 0;
-            let b = 2;
+            const expHistory = await getExpHistory(username); 
+           
            // here is a comment
             
             /* (i in guild.members) {
