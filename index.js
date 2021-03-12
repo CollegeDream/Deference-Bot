@@ -113,56 +113,11 @@ client.on("message", async message => {
 
     if(command === "test"){
       client.commands.get('alias').execute(message, args);
-      /*if(!args.length){
-        return message.channel.send('no argument provided');
-      } else if (args[0] === "aliases"){
-        if(!args[1]){
-          message.channel.send(`Provide a username, ${message.author.toString()}`)
-        } else if(args[1].toLowerCase() === "collegedream"){
-          return message.channel.send('.')
-        } else {
-          const IGN = args[1];
-          const playerUUID = await getUUID(IGN);
-          //if(!playerUUID){
-          //  message.channel.send('Could not find a player with this IGN');
-         // } else {
-          const player = await getPlayer(IGN);
-          var myArray = player.knownAliases;
-            
-          let msg;
-          async function printAliases(myArray){
-            var myArray = player.knownAliases;
-            msg = message.channel.send('\`Calculating...\`')
-          
-          await new Promise((resolve, reject)=>{
-            setTimeout(function(){resolve(msg)}, 1000);
-          }).then((msg) => msg.edit('\`Estimated time: 2 seconds\`'));
-            return myArray;
-          }
-
-          
-          async function sending(){
-            
-            let thirdArray = await printAliases(myArray);
-            await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg)}, 2000);
-            }).then((msg) => msg.edit('\`Sending the name!\`'))
-            await new Promise((resolve, reject)=>{
-              setTimeout(function(){resolve(msg)}, 150);
-            }).then((msg) => msg.delete())
-            message.channel.send(thirdArray.join('\n'))
-          }
-
-          await sending();
-          
-
-      }
-      }*/
-      
     }
     
     if(command === "hug"){
-      let replies = ["You are wonderful!", 
+      client.commands.get('hug').execute(message, args);
+      /*let replies = ["You are wonderful!", 
         "You are enough!",
         "You are loved!",
         "Everything about you makes me happy!",
@@ -184,7 +139,7 @@ client.on("message", async message => {
       ];
       message.channel.send(replies[Math.floor(Math.random() * replies.length)]).then((message) => {
         message.react('🤗');
-      }).catch(err => {console.log(err);})
+      }).catch(err => {console.log(err);})*/
     
     }
 
