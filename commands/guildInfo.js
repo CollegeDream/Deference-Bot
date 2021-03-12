@@ -55,6 +55,7 @@ module.exports = {
             }
             const expHistory = getExpHistory(username); 
             let i = 0;
+            //coment
             /* (i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
