@@ -53,6 +53,7 @@ module.exports = {
             let exp = result.members.exp_history;
             message.channel.send(exp);
             }
+            console.log('hey')
             const expHistory = await getExpHistory(username); 
            
            // here is a comment
