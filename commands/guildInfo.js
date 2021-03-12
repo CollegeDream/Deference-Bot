@@ -48,7 +48,7 @@ module.exports = {
             //const player = await getPlayer(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            var guildMembers = guild.members;
+            
             /*for(let i = 0; i < guildMembers.length; i++){
                 if(guild.members[i].uuid === playerUUID){
                     message.channel.send('found player');
@@ -56,7 +56,11 @@ module.exports = {
                     message.channel.send('failed');
                 }
             }*/
-            message.channel.send(guild.members[3].uuid);
+            let guildMembers = guild.members;
+            let guildMember = guildMembers.find(guild.members.uuid => guild.members.uuid === playerUUID);
+            if(guildMember){
+                message.channel.send('found player');
+            }
         }
     },
 }
