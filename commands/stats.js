@@ -2,7 +2,21 @@ const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs")
 
-
+function getUUID(username) {
+    return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
+    .then(data => data.json())
+    .then((player) => {
+      return player.id
+    }).catch(e=>null);
+}
+async function getPlayer(username){
+    const id = await getUUID(username)
+return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
+.then(result => result.json())
+.then(({player}) => {
+    return player
+}).catch(e=>null);
+};
 
 module.exports = {
     name: 'stats',
@@ -14,21 +28,7 @@ module.exports = {
         if(!username) return message.reply("You need to say your minecraft username.")
   
         //const linkedAccount = await getLinkedDiscord(username);
-        function getUUID(username) {
-            return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
-            .then(data => data.json())
-            .then((player) => {
-              return player.id
-            }).catch(e=>null);
-        }
-        async function getPlayer(username){
-            const id = await getUUID(username)
-        return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
-        .then(result => result.json())
-        .then(({player}) => {
-            return player
-        }).catch(e=>null);
-        };
+
         const playerUUID = getUUID(username);
         //const authorID = message.author.id;
         const player = await getPlayer(username);
