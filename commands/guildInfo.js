@@ -49,16 +49,14 @@ module.exports = {
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             
-            /*for(let i = 0; i < guildMembers.length; i++){
-                if(guild.members[i].uuid === playerUUID){
-                    message.channel.send('found player');
-                } else {
-                    message.channel.send('failed');
+            for (i in guild.members) {
+                if (guild.members[i].uuid == playerUUID) {
+                    message.channel.send(guild.members[i].rank);
                 }
-            }*/
-            let guildMembers = guild.members;
+            }
+            /*let guildMembers = guild.members;
             let guildMember = guildMembers.find(({uuid}) => uuid === playerUUID);
-            message.channel.send(guild.guildMember.rank);
+            message.channel.send(guild.guildMember.rank);*/
             
         }
     },
