@@ -58,9 +58,8 @@ module.exports = {
             }*/
             let guildMembers = guild.members;
             let guildMember = guildMembers.find( ({uuid}) => uuid === playerUUID);
-            if(guildMember){
-                message.channel.send('found player');
-            }
+            message.channel.send(guildMember.uuid);
+            
         }
     },
 }
