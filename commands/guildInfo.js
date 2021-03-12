@@ -52,6 +52,8 @@ module.exports = {
             const result = await response.json();
             let exp = result.members.exp_history;
             message.channel.send(exp);
+            }
+            const expHistory = getExpHistory(usernamer);
     
             /* (i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
