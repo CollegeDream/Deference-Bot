@@ -2,7 +2,7 @@
 module.exports = {
     name: 'stats',
     description: 'print statistics',
-    execute(){
+    execute(message, args){
         const config = require("../config.json")
         const fetch = require("node-fetch")
         const fs = require("fs")
@@ -54,7 +54,7 @@ module.exports = {
         return game
         }).catch(e=>console.log(e));
         };
-        const args = message.content.slice(config.prefix.length).trim().split(/ +/);
+        //const args = message.content.slice(config.prefix.length).trim().split(/ +/);
        //const command = args.shift().toLowerCase();
         const username = args[0]
         if(!username) return message.reply("You need to say your minecraft username.")
