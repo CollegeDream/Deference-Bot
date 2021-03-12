@@ -48,7 +48,7 @@ module.exports = {
         message.channel.send(`Online status: \n
         Network level: ${networkLevel.toFixed(2)}\n
         First joined: ${joinedDate}\n
-        Bedwars stars:  (this bot is in beta)`)
+        Bedwars stars: ${bedwarsLevel} stars (this bot is in beta)`)
     
     },
 };
