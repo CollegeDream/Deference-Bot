@@ -99,7 +99,7 @@ client.on("message", async message => {
       const command = require(`./commands/${file}`);
       client.commands.set(command.name, command);
     }
-    
+
     if(command === "stats"){
       client.commands.get('stats').execute(message, args);
     }
@@ -184,7 +184,8 @@ client.on("message", async message => {
     }
 
     if(command === "verify"){
-      const username = args[0]
+      client.commands.get('verify').execute(message, args);
+      /*const username = args[0]
       const linkedAccount = await getLinkedDiscord(username)
       const playerUUID = await getUUID(username);
       const authorID = message.author.id;
@@ -289,7 +290,7 @@ client.on("message", async message => {
       }).catch(e=>{
         console.log(e)
         message.reply(`An error occured: \n\`${e}\``)
-      })
+      })*/
     }
 
 })
