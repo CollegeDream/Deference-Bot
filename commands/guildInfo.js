@@ -50,11 +50,13 @@ module.exports = {
             async function getExpHistory(username){
             const response = await fetch(`https://api.slothpixel.me/api/guilds/${username}`)
             const result = await response.json();
-            let exp = result.members.rank;
+            let data = result;
+            let exp = data.members.rank;
+
             message.channel.send(exp);
             }
             console.log('hey')
-            const expHistory = await getExpHistory(username); 
+            await getExpHistory(username); 
            
            // here is a comment
             
