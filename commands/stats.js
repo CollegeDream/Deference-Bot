@@ -59,7 +59,7 @@ module.exports = {
         const username = args[0]
         if(!username) return message.reply("You need to say your minecraft username.")
   
-        const linkedAccount = getLinkedDiscord(username);
+        const linkedAccount = await getLinkedDiscord(username);
         const playerUUID = getUUID(username);
         const authorID = message.author.id;
         const player = getPlayer(username);
