@@ -42,14 +42,6 @@ async function getLinkedDiscord(username){
     return user.socialMedia.links.DISCORD
 }
 
-async function getOnlineStatus(username){
-  return fetch(`https://api.slothpixel.me/api/players/${username}/status`)
-  .then(result => result.json())
-  .then(({game}) => {
-    return game
-  }).catch(e=>console.log(e));
-};
-
 const Discord = require('discord.js');
 module.exports = {
     name: 'verify',
