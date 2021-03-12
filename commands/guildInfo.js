@@ -52,7 +52,7 @@ module.exports = {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
                     let expArray = guildMember.expHistory;
-                    message.channel.send(expArray.join('\n'))
+                    message.channel.send(guildMember.expHistory.join('\n'))
                 }
             }
         }
