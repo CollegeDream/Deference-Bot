@@ -74,7 +74,7 @@ module.exports = {
           message.channel.send(`Game type: ${data.game.type}`)
   
         }*/
-        const status = await getOnlineStatus(username);
+        const status = getOnlineStatus(username);
         message.channel.send(`Online status: ${status.type}\n
         Network level: ${networkLevel.toFixed(2)}\n
         First joined: ${joinedDate}\n
