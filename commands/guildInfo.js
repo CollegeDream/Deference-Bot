@@ -48,7 +48,7 @@ module.exports = {
             //const player = await getPlayer(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            let guildMembers = guild.members;
+            var guildMembers = guild.members;
             /*for(let i = 0; i < guildMembers.length; i++){
                 if(guild.members[i].uuid === playerUUID){
                     message.channel.send('found player');
