@@ -7,7 +7,7 @@ const fs = require("fs")
 module.exports = {
     name: 'stats',
     description: 'print statistics',
-    execute(message, args){
+    async execute(message, args){
       
 
         const username = args[0]
