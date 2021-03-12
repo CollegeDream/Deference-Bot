@@ -1,6 +1,7 @@
 const config = require("../config.json")
 const fetch = require("node-fetch")
-const fs = require("fs")
+const fs = require("fs");
+const { get } = require("http");
 
 function getUUID(username) {
     return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
@@ -16,6 +17,14 @@ return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
 .then(({player}) => {
     return player
 }).catch(e=>null);
+};
+
+async function getOnlineStatus(username){
+    return fetch(`https://api.slothpixel.me/api/players/${username}/status`)
+    .then(result => result.json())
+    .then((result) => {
+      return result;
+    }).catch(e=>console.log(e));
 };
 
 module.exports = {
@@ -35,6 +44,7 @@ module.exports = {
         
         var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
         var joinedDate = new Date(player.firstLogin);
+        var onlineStatus = await getOnlineStatus(username);
         //const playerObject = await getPlayer(username)
         /*async function getOnlineStatus(username){
           const response = await fetch(`https://api.slothpixel.me/api/players/${username}/status`)
@@ -45,7 +55,7 @@ module.exports = {
   
         }*/
         //const status = getOnlineStatus(username);
-        message.channel.send(`Online status: \n
+        message.channel.send(`Online status: ${onlineStatus.game.type} \n
         Network level: ${networkLevel.toFixed(2)}\n
         First joined: ${joinedDate}\n
         Bedwars stars: ${bedwarsLevel} stars (this bot is in beta)`)
