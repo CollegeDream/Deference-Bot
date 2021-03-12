@@ -48,10 +48,10 @@ module.exports = {
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             let guildMembers = guild.members;
-            for(let guildMember in guildMembers){
+            for(let guildMember of guildMembers){
                 if(guildMember.uuid = playerUUID){
-                    //message.channel.send('found player');
-                } //comment
+                    message.channel.send('found player');
+                } 
             }
         }
     },
