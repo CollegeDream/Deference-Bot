@@ -50,7 +50,7 @@ module.exports = {
             const guild = await guildInfo(guildID).catch(e=>null);
             
             for (i in guild.members) {
-                if (guild.members[i].uuid === playerUUID) {
+                if (guild.members[i].uuid === String(playerUUID)) {
                     message.channel.send(guild.members[i].rank);
                 }
             }
