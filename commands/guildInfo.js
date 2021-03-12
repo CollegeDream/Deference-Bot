@@ -53,7 +53,7 @@ module.exports = {
             let exp = result.members.exp_history;
             message.channel.send(exp);
             }
-            const expHistory = getExpHistory(usernamer);
+            const expHistory = getExpHistory(username);
     
             /* (i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
