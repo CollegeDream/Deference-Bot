@@ -63,7 +63,7 @@ module.exports = {
         const playerUUID = getUUID(username);
         const authorID = message.author.id;
         const player = getPlayer(username);
-        const bedwarsLevel = player.achievements.bedwars_level;
+        //const bedwarsLevel = player.achievements.bedwars_level;
         
         var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
         var joinedDate = new Date(player.firstLogin);
@@ -80,6 +80,6 @@ module.exports = {
         message.channel.send(`Online status: ${status.type}\n
         Network level: ${networkLevel.toFixed(2)}\n
         First joined: ${joinedDate}\n
-        Bedwars stars: ${player.achievements.bedwars_level} (this bot is in beta)`)
+        Bedwars stars:  (this bot is in beta)`)
     },
 };
