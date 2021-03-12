@@ -50,6 +50,7 @@ async function getOnlineStatus(username){
   }).catch(e=>console.log(e));
 };
 
+const Discord = require('discord.js');
 module.exports = {
     name: 'verify',
     description: 'account verification',
