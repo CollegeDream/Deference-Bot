@@ -45,15 +45,13 @@ module.exports = {
         } else {
             const username = args[0];
             const playerUUID = await getUUID(username);
-            //const player = await getPlayer(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            message.channel.send(playerUUID);
             for (i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
-                    message.channel.send(guildMember.expHistory)
+                    message.channel.send(guildMember.expHistory);
                 }
             }
             /*let guildMembers = guild.members;
