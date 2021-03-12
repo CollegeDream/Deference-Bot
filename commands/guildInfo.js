@@ -1,6 +1,7 @@
 const config = require("../config.json")
 const fetch = require("node-fetch")
-const fs = require("fs")
+const fs = require("fs");
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 
 function getUUID(username) {
     return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
@@ -48,10 +49,10 @@ module.exports = {
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             let guildMembers = guild.members;
-            for(let guildMember of guildMembers){
-                if(guildMember.uuid = playerUUID){
-                    message.channel.send(`${guildMembers.uuid}`);
-                } 
+            for(let i = 0; i < guildMembers.length; i++){
+                if(guild.members[i].uuid == playerUUID){
+                    message.channel.send('found player');
+                }
             }
         }
     },
