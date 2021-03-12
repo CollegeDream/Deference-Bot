@@ -52,6 +52,8 @@ module.exports = {
             for(let i = 0; i < guildMembers.length; i++){
                 if(guild.members[i].uuid == playerUUID){
                     message.channel.send('found player');
+                } else {
+                    message.channel.send('failed');
                 }
             }
         }
