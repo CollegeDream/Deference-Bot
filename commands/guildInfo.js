@@ -57,8 +57,8 @@ module.exports = {
                 }
             }*/
             let guildMembers = guild.members;
-            let guildMember = guild.members.find(({uuid}) => uuid === playerUUID);
-            message.channel.send(guildMember.rank);
+            let guildMember = guildMembers.find(({uuid}) => uuid === playerUUID);
+            message.channel.send(guildMember.members.rank);
             
         }
     },
