@@ -54,20 +54,20 @@ module.exports = {
 
             message.channel.send(exp);
             }
-            console.log('hey')
-            await getExpHistory(username); 
+            //console.log('hey')
+            //await getExpHistory(username); 
            
            // here is a comment
             
-            /* (i in guild.members) {
+             for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
                     for(x in guildMember.expHistory){
-                        message.channel.send(guildMember.expHistory[x]);
+                        message.channel.send(guildMember.expHistory[x].date);
                     }
                 }
-            }*/
+            }
         }
     },
 }
