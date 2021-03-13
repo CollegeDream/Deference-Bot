@@ -59,7 +59,7 @@ module.exports = {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
                     for(x in guildMember.expHistory){
-                        message.channel.send(`${x}, ${guildMember.expHistory[x]}`);
+                        message.channel.send(`GEXP history:\n${x}: ${guildMember.expHistory[x]}`);
                     }
                 }
             }
