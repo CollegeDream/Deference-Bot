@@ -36,6 +36,8 @@ return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 }).catch(e=>console.log(e));
 }
 
+const Discord = require('discord.js');
+
 module.exports = {
     name: 'guildInfo',
     description: 'get the guild of a player',
@@ -45,17 +47,21 @@ module.exports = {
         } else {
             const username = args[0];
             const playerUUID = await getUUID(username);
+            const player = await getPlayer(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             //console.log('hey')
             //await getExpHistory(username); 
-                    
+            const guild_Embed = new Discord.MessageEmbed()
+                .setColor('#e6e609')
+                .setTitle(`${player.displayName}\' exp contribution:`)
+                
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
-                    message.channel.send('GEXP history: ');                    for(x in guildMember.expHistory){
-                        message.channel.send(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
+                    for(x in guildMember.expHistory){
+                        guild_Embed.addField('\u200B', `${x}: \*\*${guildMember.expHistory[x]}\*\*`, false);
                     }
                 }
             }
