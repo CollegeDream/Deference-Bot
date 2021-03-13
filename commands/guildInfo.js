@@ -60,8 +60,9 @@ module.exports = {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
-                        guild_Embed.addField('\u200B', `${x}: \*\*${guildMember.expHistory[x]}\*\*`, false);
+                        guild_Embed.setDescription('\u200B', `${x}: \*\*${guildMember.expHistory[x]}\*\*`, false);
                     }
+                    message.channel.send(`${player.displayName}`)
                     message.channel.send(guild_Embed);
                 }
             }
