@@ -52,20 +52,22 @@ module.exports = {
             const guild = await guildInfo(guildID).catch(e=>null);
             //console.log('hey')
             //await getExpHistory(username); 
+            var expArray = new Array();
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#e6e609')
-                .setTitle(`${player.displayName}\' exp contribution:`)
+                .setTitle(`${player.displayname}\' exp contribution:`)
                 
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
-                        guild_Embed.setDescription(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
+                        expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*\n`);
                     }
-                    message.channel.send(`${player.displayName}`)
-                    message.channel.send(guild_Embed);
+                    
                 }
             }
+            guild_Embed.setDescription(expArray.join('\n'))
+            message.channel.send(guild_Embed);
         }
     },
 }
