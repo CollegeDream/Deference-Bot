@@ -47,13 +47,6 @@ module.exports = {
             const playerUUID = await getUUID(username);
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            async function getExpHistory(username){
-            const response = await fetch(`https://api.slothpixel.me/api/guilds/${username}`)
-            const result = await response.json();
-            let exp = result.members[80].exp_history;
-
-            message.channel.send(exp);
-            }
             //console.log('hey')
             //await getExpHistory(username); 
            
@@ -61,15 +54,15 @@ module.exports = {
                 for (var key in dict){
                 console.log( key, dict[key] );
                 }            
-            /* for(i in guild.members) {
+             for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
                     for(x in guildMember.expHistory){
-                        message.channel.send(guildMember.expHistory[x].date);
+                        message.channel.send(x, guildMember.expHistory[x]);
                     }
                 }
-            }*/
+            }
         }
     },
 }
