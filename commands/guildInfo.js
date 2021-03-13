@@ -11,11 +11,11 @@ function getUUID(username) {
     }).catch(e=>null);
 }
 async function getPlayer(username){
-const id = await getUUID(username)
-return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
-.then(result => result.json())
-.then(({player}) => {
-return player
+    const id = await getUUID(username)
+    return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
+    .then(result => result.json())
+    .then(({player}) => {
+    return player
 }).catch(e=>null);
 };
 
@@ -60,7 +60,7 @@ module.exports = {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
-                        guild_Embed.setDescription('\u200B', `${x}: \*\*${guildMember.expHistory[x]}\*\*`, false);
+                        guild_Embed.setDescription(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                     }
                     message.channel.send(`${player.displayName}`)
                     message.channel.send(guild_Embed);
