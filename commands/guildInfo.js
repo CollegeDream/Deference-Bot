@@ -57,9 +57,11 @@ module.exports = {
             //console.log('hey')
             //await getExpHistory(username); 
            
-           // here is a comment
-            
-             for(i in guild.members) {
+            dict = {"2021-03-12":111,"2021-03-11":44348,"2021-03-10":14546,"2021-03-09":519,"2021-03-08":15852,"2021-03-07":22288,"2021-03-06":5266}
+                for (var key in dict){
+                console.log( key, dict[key] );
+                }            
+            /* for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i]
                     message.channel.send(guildMember.rank);
@@ -67,7 +69,7 @@ module.exports = {
                         message.channel.send(guildMember.expHistory[x].date);
                     }
                 }
-            }
+            }*/
         }
     },
 }
