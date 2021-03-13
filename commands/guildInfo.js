@@ -58,11 +58,11 @@ module.exports = {
                 
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
-                    guildMember = guild.members[i]
-                    message.channel.send(guildMember.rank);
+                    guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
                         guild_Embed.addField('\u200B', `${x}: \*\*${guildMember.expHistory[x]}\*\*`, false);
                     }
+                    message.channel.send(guild_Embed);
                 }
             }
         }
