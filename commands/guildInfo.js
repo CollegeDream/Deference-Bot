@@ -61,7 +61,7 @@ module.exports = {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
-                        expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*\n`);
+                        expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                     }
                     
                 }
