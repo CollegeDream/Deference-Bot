@@ -31,7 +31,7 @@ async function getGuild(username){
 async function guildInfo(guildID){
 return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 .then(result => result.json())
-.then(({guild}) => {
+.then((result) => {
     return guild
 }).catch(e=>console.log(e));
 }
