@@ -108,34 +108,6 @@ client.on("message", async message => {
       console.error(error);
       message.reply('there was an error trying to execute that command!');
     }
-    
-
-    /*if(command === "verify"){
-      client.commands.get('verify').execute(message, args);
-    }
-
-    if(command === "stats"){
-      client.commands.get('stats').execute(message, args);
-    }
-
-    if(command === "g"){
-      client.commands.get('guildInfo').execute(message, args);
-    }
-
-    if(command === "help"){
-      message.channel.send('Bot in development, help command will be available later!\nCurrent commands:\n&verify\n&hug\n&test aliases\n&stats')
-    }
-
-    if(command === "test"){
-      client.commands.get('alias').execute(message, args);
-    }
-    
-    if(command === "hug"){
-      client.commands.get('hug').execute(message, args);
-    }*/
-
-
-
 })
 
 //const token = fs.readFileSync(__dirname+"/./token.txt").toString()

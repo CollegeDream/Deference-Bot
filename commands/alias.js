@@ -19,7 +19,7 @@ return player
 };
 
 module.exports = {
-    name: 'alias',
+    name: 'test',
     description: 'print player\'s aliases',
     async execute(message, args){
         if(!args.length){
