@@ -32,7 +32,7 @@ async function guildInfo(guildID){
 return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 .then(result => result.json())
 .then((result) => {
-    return guild
+    return result
 }).catch(e=>console.log(e));
 }
 
@@ -57,7 +57,7 @@ module.exports = {
                 .setColor('#e6e609')
                 .setTitle(`${player.displayname}\' exp contribution:`)
                 .setFooter('Bot is in development')
-             for(i in guild.guild.members) {
+             for(i in guild.members) {
                 if (guild.guild.members[i].uuid === playerUUID) {
                     guildMember = guild.guild.members[i];
                     for(x in guildMember.expHistory){
