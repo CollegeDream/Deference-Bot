@@ -100,7 +100,17 @@ client.on("message", async message => {
       client.commands.set(command.name, command);
     }
 
-    if(command === "verify"){
+    if (!client.commands.has(command)) return;
+
+    try {
+      client.commands.get(command).execute(message, args);
+    } catch (error) {
+      console.error(error);
+      message.reply('there was an error trying to execute that command!');
+    }
+    
+
+    /*if(command === "verify"){
       client.commands.get('verify').execute(message, args);
     }
 
@@ -122,7 +132,7 @@ client.on("message", async message => {
     
     if(command === "hug"){
       client.commands.get('hug').execute(message, args);
-    }
+    }*/
 
 
 
