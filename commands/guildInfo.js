@@ -57,9 +57,9 @@ module.exports = {
                 .setColor('#e6e609')
                 .setTitle(`${player.displayname}\' exp contribution:`)
                 .setFooter('Bot is in development')
-             for(i in guild.members) {
-                if (guild.members[i].uuid === playerUUID) {
-                    guildMember = guild.members[i];
+             for(i in guild.guild.members) {
+                if (guild.guild.members[i].uuid === playerUUID) {
+                    guildMember = guild.guild.members[i];
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*\n`);
                     }
