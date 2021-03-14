@@ -47,10 +47,10 @@ client.on("message", async message => {
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
 
-    for(const file of commandFiles){
+    /*for(const file of commandFiles){
       const command = require(`./commands/${file}`);
       client.commands.set(command.name, command);
-    }
+    }*/
 
     if (!client.commands.has(command)) return;
 
