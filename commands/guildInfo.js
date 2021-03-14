@@ -39,7 +39,7 @@ return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 const Discord = require('discord.js');
 
 module.exports = {
-    name: 'guildInfo',
+    name: 'g',
     description: 'get the guild of a player',
     async execute(message, args){
         if(!args[0]){
