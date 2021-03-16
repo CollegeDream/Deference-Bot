@@ -60,7 +60,7 @@ module.exports = {
                 .setWidth(1000)
                 .setHeight(500)
                 .setFormat('png')
-                .setBackgroundColor('#3d4045')
+                .setBackgroundColor('transparent')
 
 
             const guild_Embed = new Discord.MessageEmbed()
@@ -82,8 +82,14 @@ module.exports = {
                             datasets: [
                            {
                                 type: 'line',
-                              label: 'GEXP',
-                              data: expArray_2.reverse()
+                                label: 'GEXP',
+                                borderColor: 'rgb(18, 224, 32)',
+                                data: expArray_2.reverse(),
+                                scales: {
+                                    xAxes:[{
+                                        offset: 'false'
+                                    }]
+                                }
                             }]
                           }
                       })
