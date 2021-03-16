@@ -67,7 +67,8 @@ module.exports = {
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#e0cf12')
                 .setThumbnail(`https://visage.surgeplay.com/full/${playerUUID}?size=240`)
-                .setTitle(`[${player.displayname}](https://plancke.io/hypixel/player/stats/${player.displayname})\'s GEXP contribution:`)
+                .setTitle(`${player.displayname}\'s GEXP contribution:`)
+                .setURL(`https://plancke.io/hypixel/player/stats/${player.displayname}`)
                 .setFooter('Bot is in development')
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
