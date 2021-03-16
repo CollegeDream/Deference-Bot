@@ -53,7 +53,8 @@ module.exports = {
             //console.log('hey')
             //await getExpHistory(username); 
             var expArray = new Array();
-
+            var expArray_2 = new Array();
+            var dateArray = new Array();
             const myChart = new QuickChart();
                 myChart
                 .setWidth(800)
@@ -70,18 +71,20 @@ module.exports = {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
-                        myChart.setConfig({
-                            type: 'bar',
-                            data: {
-                                labels: ['Q4'],
-                                datasets: [
-                               {
-                                  label: 'GEXP',
-                                  data: [guildMember.expHistory[0], guildMember.expHistory[1], guildMember.expHistory[2], guildMember.expHistory[3], guildMember.expHistory[4], guildMember.expHistory[5], guildMember.expHistory[6]]
-                                }]
-                              }
-                          })
+                        dateArray.push(x);
+                        expArray_2.push(guildMember.expHistory[x]);
                     }
+                    myChart.setConfig({
+                        type: 'bar',
+                        data: {
+                            labels: dateArray,
+                            datasets: [
+                           {
+                              label: 'GEXP',
+                              data: expArray_2
+                            }]
+                          }
+                      })
                     
                 }
             }
@@ -91,3 +94,4 @@ module.exports = {
         }
     },
 }
+
