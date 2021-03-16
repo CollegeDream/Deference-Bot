@@ -60,7 +60,7 @@ module.exports = {
                 .setWidth(1000)
                 .setHeight(500)
                 .setFormat('png')
-                .setBackgroundColor('#665b5a');
+                .setBackgroundColor('#665b5a')
 
 
             const guild_Embed = new Discord.MessageEmbed()
