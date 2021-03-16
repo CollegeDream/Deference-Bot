@@ -79,21 +79,22 @@ module.exports = {
                         type: 'bar',
                         data: {
                             labels: dateArray.reverse(),
+                            
                             datasets: [
                            {
                                 type: 'line',
                                 label: 'GEXP',
                                 borderColor: 'rgb(18, 224, 32)',
-                                backgroundColor: 'rgb(18, 224, 32)',
+                                backgroundColor: 'rgb(18, 224, 32, 0.5)',
                                 data: expArray_2.reverse(),
-                                scales: {
-                                    xAxes:[{
-                                        offset: false
-                                    }]
-                                }
 
                             }]
-                          }
+                          },
+                          scales: {
+                            xAxes:[{
+                                offset: false
+                            }]
+                        }
                       })
                     
                 }
