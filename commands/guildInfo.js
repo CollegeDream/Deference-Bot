@@ -65,7 +65,7 @@ module.exports = {
 
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#3d4045')
-                .setTitle(`${player.displayname}\'s exp contribution:`)
+                //.setTitle(`${player.displayname}\'s exp contribution:`)
                 .setFooter('Bot is in development')
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
