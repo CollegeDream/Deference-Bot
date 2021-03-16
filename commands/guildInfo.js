@@ -101,10 +101,9 @@ module.exports = {
                             }
                           }
                       })
-                    let expTotal = 0;
-                  
                 }
             }
+            let expTotal = 0;
             for(z in expArray){
                 expTotal += expArray[z];
             }
