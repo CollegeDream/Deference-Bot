@@ -52,6 +52,7 @@ module.exports = {
             const guild = await guildInfo(guildID).catch(e=>null);
             //console.log('hey')
             //await getExpHistory(username); 
+            let expTotal = 0;
             var expArray = new Array();
             var expArray_2 = new Array();
             var dateArray = new Array();
@@ -74,6 +75,7 @@ module.exports = {
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                         dateArray.push(x);
                         expArray_2.push(guildMember.expHistory[x]);
+                        expTotal += guildMember.expHistory[x];
                     }
                     myChart.setConfig({
                         type: 'bar',
@@ -103,10 +105,7 @@ module.exports = {
                       })
                 }
             }
-            let expTotal = 0;
-            for(z in expArray){
-                expTotal += expArray[z];
-            }
+            
             guild_Embed.setImage(myChart.getUrl());
             guild_Embed.setDescription(expArray.join('\n'))
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
