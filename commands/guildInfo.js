@@ -86,7 +86,7 @@ module.exports = {
                                 type: 'line',
                                 label: 'GEXP',
                                 borderColor: 'rgb(18, 224, 32)',
-                                backgroundColor: 'rgb(18, 224, 32, 0.85)',
+                                backgroundColor: 'rgba(18, 224, 32, 0.25)',
                                 fill: true,
                                 data: expArray_2.reverse()
 
