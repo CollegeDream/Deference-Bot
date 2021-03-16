@@ -77,6 +77,7 @@ module.exports = {
                     }
                     myChart.setConfig({
                         type: 'bar',
+                        offset: false,
                         data: {
                             labels: dateArray.reverse(),
                             
@@ -84,10 +85,10 @@ module.exports = {
                            {
                                 type: 'line',
                                 label: 'GEXP',
-                                offset: false,
                                 borderColor: 'rgb(18, 224, 32)',
                                 backgroundColor: 'rgb(18, 224, 32, 0.25)',
-                                data: expArray_2.reverse(),
+                                fill: true,
+                                data: expArray_2.reverse()
 
                             }]
                           },
