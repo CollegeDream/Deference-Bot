@@ -93,7 +93,13 @@ module.exports = {
 
                             }]
                           },
-                        offset: '0'
+                          options: {
+                            scales: {
+                              xAxes: [{
+                                offset: false
+                              }]
+                            }
+                          }
                       })
                     
                 }
