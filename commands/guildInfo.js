@@ -57,8 +57,9 @@ module.exports = {
             var dateArray = new Array();
             const myChart = new QuickChart();
                 myChart
-                .setWidth(800)
-                .setHeight(400)
+                .setWidth(1000)
+                .setHeight(500)
+                .setFormat('png')
                 .setBackgroundColor('#665b5a');
 
 
