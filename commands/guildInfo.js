@@ -84,12 +84,14 @@ module.exports = {
                                 type: 'line',
                                 label: 'GEXP',
                                 borderColor: 'rgb(18, 224, 32)',
+                                backgroundColor: 'rgb(18, 224, 32)',
                                 data: expArray_2.reverse(),
                                 scales: {
                                     xAxes:[{
-                                        offset: 'false'
+                                        offset: false
                                     }]
                                 }
+
                             }]
                           }
                       })
