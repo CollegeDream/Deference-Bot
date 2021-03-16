@@ -1,7 +1,7 @@
 const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs");
-
+const QuickChart = require('quickchart-js');
 
 function getUUID(username) {
     return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
@@ -53,6 +53,16 @@ module.exports = {
             //console.log('hey')
             //await getExpHistory(username); 
             var expArray = new Array();
+
+            const myChart = new QuickChart();
+                myChart
+                .setWidth(800)
+                .setHeight(400)
+                .setBackgroundColor('transparent');
+
+                // Print the chart URL
+                console.log(myChart.getUrl());
+
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#e6e609')
                 .setTitle(`${player.displayname}\'s exp contribution:`)
@@ -62,6 +72,17 @@ module.exports = {
                     guildMember = guild.members[i];
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
+                        myChart.setConfig({
+                            type: 'bar',
+                            data: {
+                                labels: x,
+                                datasets: [
+                               {
+                                  label: 'GEXP',
+                                  data: [guildMember.expHistory[0], guildMember.expHistory[1], guildMember.expHistory[2], guildMember.expHistory[3], guildMember.expHistory[4], guildMember.expHistory[5], guildMember.expHistory[6]]
+                                }]
+                              }
+                          })
                     }
                     
                 }
