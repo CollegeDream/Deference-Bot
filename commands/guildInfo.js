@@ -60,11 +60,11 @@ module.exports = {
                 .setWidth(1000)
                 .setHeight(500)
                 .setFormat('png')
-                .setBackgroundColor('#665b5a')
+                .setBackgroundColor('#3d4045')
 
 
             const guild_Embed = new Discord.MessageEmbed()
-                .setColor('#3d4045')
+                .setColor('#e0cf12')
                 //.setTitle(`${player.displayname}\'s exp contribution:`)
                 .setFooter('Bot is in development')
              for(i in guild.members) {
@@ -76,7 +76,7 @@ module.exports = {
                         expArray_2.push(guildMember.expHistory[x]);
                     }
                     myChart.setConfig({
-                        type: 'smooth',
+                        type: 'smooth curve',
                         data: {
                             labels: dateArray.reverse(),
                             datasets: [
