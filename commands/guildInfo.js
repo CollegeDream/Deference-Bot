@@ -73,7 +73,7 @@ module.exports = {
                         myChart.setConfig({
                             type: 'bar',
                             data: {
-                                labels: x,
+                                labels: ['Q4'],
                                 datasets: [
                                {
                                   label: 'GEXP',
