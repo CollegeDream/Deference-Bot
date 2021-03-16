@@ -72,9 +72,9 @@ myChart
   .setBackgroundColor('transparent');
 
 // Print the chart URL
-console.log(myChart.getUrl());
+console.log(myChart.getUrl());*/
 
-})*/
+})
 
 //const token = fs.readFileSync(__dirname+"/./token.txt").toString()
 client.login(littleKey)
