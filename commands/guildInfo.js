@@ -80,7 +80,7 @@ module.exports = {
                         
                         data: {
                             labels: dateArray.reverse(),
-                            
+                            offset: '0',
                             datasets: [
                            {
                                 type: 'line',
@@ -88,11 +88,12 @@ module.exports = {
                                 borderColor: 'rgb(18, 224, 32)',
                                 backgroundColor: 'rgba(18, 224, 32, 0.25)',
                                 fill: true,
+                                offset: '0',
                                 data: expArray_2.reverse()
 
                             }]
                           },
-                        offset: false
+                        offset: '0'
                       })
                     
                 }
