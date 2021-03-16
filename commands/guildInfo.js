@@ -63,7 +63,7 @@ module.exports = {
 
 
             const guild_Embed = new Discord.MessageEmbed()
-                .setColor('#e6e609')
+                .setColor('#3d4045')
                 .setTitle(`${player.displayname}\'s exp contribution:`)
                 .setFooter('Bot is in development')
              for(i in guild.members) {
@@ -75,7 +75,7 @@ module.exports = {
                         expArray_2.push(guildMember.expHistory[x]);
                     }
                     myChart.setConfig({
-                        type: 'line',
+                        type: 'smooth',
                         data: {
                             labels: dateArray.reverse(),
                             datasets: [
