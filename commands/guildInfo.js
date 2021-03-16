@@ -60,8 +60,6 @@ module.exports = {
                 .setHeight(400)
                 .setBackgroundColor('transparent');
 
-                // Print the chart URL
-                console.log(myChart.getUrl());
 
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#e6e609')
@@ -87,6 +85,7 @@ module.exports = {
                     
                 }
             }
+            guild_Embed.setImage(myChart.getUrl());
             guild_Embed.setDescription(expArray.join('\n'))
             message.channel.send(guild_Embed);
         }
