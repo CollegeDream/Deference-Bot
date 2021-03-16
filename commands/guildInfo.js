@@ -73,7 +73,7 @@ module.exports = {
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
-                    guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guild.name.replace(/\s/g, '')})**`, true)
+                    guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/player/${player.displayname})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
                     for(x in guildMember.expHistory){
