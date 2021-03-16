@@ -91,11 +91,7 @@ module.exports = {
 
                             }]
                           },
-                          scales: {
-                            xAxes:[{
-                                offset: false
-                            }]
-                        }
+
                       })
                     
                 }
