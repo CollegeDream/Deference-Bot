@@ -102,10 +102,11 @@ module.exports = {
                           }
                       })
                     let expTotal = 0;
-                    for(z in expArray){
-                        expTotal += expArray[z];
-                    }
+                  
                 }
+            }
+            for(z in expArray){
+                expTotal += expArray[z];
             }
             guild_Embed.setImage(myChart.getUrl());
             guild_Embed.setDescription(expArray.join('\n'))
