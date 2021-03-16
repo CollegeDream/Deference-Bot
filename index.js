@@ -2,7 +2,7 @@ const config = require("./config.json")
 const fetch = require("node-fetch")
 const fs = require("fs")
 const { token, littleKey, port } = require('./config.json');
-const QuickChart = require('quickchart-js');
+//const QuickChart = require('quickchart-js');
 const Discord = require('discord.js');
 const { measureMemory } = require("vm");
 const { rejects } = require("assert");
@@ -61,7 +61,7 @@ client.on("message", async message => {
       message.reply('there was an error trying to execute that command!');
     }
 
-    const myChart = new QuickChart();
+    /*const myChart = new QuickChart();
 myChart
   .setConfig({
     type: 'bar',
@@ -74,7 +74,7 @@ myChart
 // Print the chart URL
 console.log(myChart.getUrl());
 
-})
+})*/
 
 //const token = fs.readFileSync(__dirname+"/./token.txt").toString()
 client.login(littleKey)
