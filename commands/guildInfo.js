@@ -101,11 +101,15 @@ module.exports = {
                             }
                           }
                       })
-                    
+                    let expTotal = 0;
+                    for(z in expArray){
+                        expTotal += expArray[z];
+                    }
                 }
             }
             guild_Embed.setImage(myChart.getUrl());
             guild_Embed.setDescription(expArray.join('\n'))
+            guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
         }
     },
