@@ -59,7 +59,7 @@ module.exports = {
                 myChart
                 .setWidth(800)
                 .setHeight(400)
-                .setBackgroundColor('transparent');
+                .setBackgroundColor('#665b5a');
 
 
             const guild_Embed = new Discord.MessageEmbed()
@@ -75,13 +75,13 @@ module.exports = {
                         expArray_2.push(guildMember.expHistory[x]);
                     }
                     myChart.setConfig({
-                        type: 'bar',
+                        type: 'line',
                         data: {
-                            labels: dateArray,
+                            labels: dateArray.reverse(),
                             datasets: [
                            {
                               label: 'GEXP',
-                              data: expArray_2
+                              data: expArray_2.reverse()
                             }]
                           }
                       })
