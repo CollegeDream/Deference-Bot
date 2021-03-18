@@ -46,8 +46,8 @@ module.exports = {
             return message.reply('provide an IGN.');
         } else {
             const username = args[0];
-            const playerUUID = await getUUID(username).catch(e=>message.channel.send(e));
-            const player = await getPlayer(username).catch(e=>message.channel.send(e));
+            const playerUUID = await getUUID(username).catch(e=>console.log(e));
+            const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             //console.log('hey')
@@ -67,7 +67,7 @@ module.exports = {
             const guild_Embed = new Discord.MessageEmbed()
                 .setColor('#e0cf12')
                 .setThumbnail(`https://visage.surgeplay.com/full/${playerUUID}?size=240`)
-                .setTitle(`${player.displayname}`).catch(console.error())
+                .setTitle(`${player.displayname}`)
                 .setAuthor('GEXP contribution')
                 .setURL(`https://plancke.io/hypixel/player/stats/${player.displayname}`)
                 .setFooter('Bot is in development')
