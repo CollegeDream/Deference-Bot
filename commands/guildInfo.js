@@ -46,8 +46,8 @@ module.exports = {
             return message.reply('provide an IGN.');
         } else {
             const username = args[0];
-            const playerUUID = await getUUID(username);
-            const player = await getPlayer(username);
+            const playerUUID = await getUUID(username).catch(e=>message.channel.send(e));
+            const player = await getPlayer(username).catch(e=>message.channel.send(e));
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
             //console.log('hey')
@@ -74,7 +74,8 @@ module.exports = {
              for(i in guild.members) {
                 if (guild.members[i].uuid === playerUUID) {
                     guildMember = guild.members[i];
-                    guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/player/${player.displayname})**`, true)
+                    guild.name = encodeURIComponent(guild.name.trim());
+                    guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guild.name})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
                     for(x in guildMember.expHistory){
