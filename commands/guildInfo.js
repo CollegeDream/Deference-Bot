@@ -118,9 +118,8 @@ module.exports = {
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
         }
-        client.on("unhandledRejection", (err) => {
-            message.channel.send(err);
-        })
     },  
 }
-
+process.on("unhandledRejection", (err) => {
+    message.channel.send(err);
+})
