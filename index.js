@@ -16,7 +16,7 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 
-client.on("ready", () => {client.user.setActivity("&help")
+client.on("ready", async () => {client.user.setActivity("&help")
   await mongo().then(mongoose => {
     try {
       console.log('connected to mongo!')
