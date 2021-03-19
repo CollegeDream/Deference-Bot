@@ -7,6 +7,8 @@ const Discord = require('discord.js');
 const { measureMemory } = require("vm");
 const { rejects } = require("assert");
 const { error } = require("console");
+const mongo = require('./mongo');
+const { Mongoose } = require("mongoose");
 const client = new Discord.Client({
   ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_PRESENCES', 'GUILD_MEMBERS']}
 });
@@ -14,7 +16,16 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 
-client.on("ready", () => {client.user.setActivity("&help")})
+client.on("ready", () => {client.user.setActivity("&help")
+  await mongo().then(mongoose => {
+    try {
+      console.log('connected to mongo!')
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
+})
 //=>console.log(`${client.user.tag} is online!`)
 client.on('guildMemberAdd', member => {
   let welcomeChannel = member.guild.channels.cache.get(config.welcomeChannel);
