@@ -121,5 +121,5 @@ module.exports = {
     },  
 }
 process.on("unhandledRejection", (err) => {
-    message.channel.send(err);
+   console.log(err);
 })
