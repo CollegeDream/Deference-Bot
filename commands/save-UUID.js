@@ -17,6 +17,7 @@ module.exports = {
     description: 'to save a player\' uuid into db',
     async execute(message, args){
         playerUUID = await getUUID(args[0]).catch(err=>console.log(err))
+        if(playerUUID){
         await mongo().then(async (mongoose) => {
             try{
                 await saveUUID.findOneAndUpdate(
@@ -41,5 +42,8 @@ module.exports = {
                 
             }
         })
+    } else {
+        message.reply('You need to provide an IGN!')
+    } 
     }
 }
