@@ -79,6 +79,7 @@ module.exports = {
                 return username;
             }
         }
+        setUsername();
         if(username){
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
