@@ -74,7 +74,6 @@ module.exports = {
             return message.reply('You are not linked!');
         } else {
             username = await getUsername(playerID)
-            return username
         }
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
