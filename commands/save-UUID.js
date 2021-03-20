@@ -18,6 +18,7 @@ module.exports = {
     async execute(message, args){
         if(args[0]){
         let playerUUID = await getUUID(args[0]).catch(err=>console.log(err))
+        }
         if(playerUUID){
         await mongo().then(async (mongoose) => {
             try{
