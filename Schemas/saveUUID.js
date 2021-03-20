@@ -10,4 +10,4 @@ const saveUUID = mongoose.Schema({
     uuid: reqString,
 })
 
-module.exports = mongoose.model('save-uuid', saveUUID)
+module.exports = mongoose.model('savePlayerID', saveUUID)
