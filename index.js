@@ -19,7 +19,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 client.on("ready", async () => {client.user.setActivity("&help")
   await mongo().then(mongoose => {
     try {
-      console.log('connected to mongo!')
+      console.log('connected to mongoDB!')
     } finally {
       mongoose.connection.close()
     }

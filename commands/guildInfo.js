@@ -2,6 +2,16 @@ const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs");
 const QuickChart = require('quickchart-js');
+const saveUUID = require('../Schemas/saveUUID')
+const mongo = require('../mongo')
+
+function getUsername(playerID) {
+    return fetch(`https://sessionserver.mojang.com/session/minecraft/profile/${playerID}`)
+    .then(data => data.json())
+    .then(({name}) => {
+      return name
+    }).catch(e=>null);
+}
 
 function getUUID(username) {
     return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
@@ -42,10 +52,26 @@ module.exports = {
     name: 'g',
     description: 'get the guild of a player',
     async execute(message, args){
-        if(!args[0]){
-            return message.reply('provide an IGN.');
+        let author;
+        let playerID;
+        await mongo().then(async (mongoose) => {
+            try{
+                author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
+                    message.channel.send(err);
+                })
+                if(author){
+                    playerID = author.uuid;
+                }
+            } finally {
+                mongoose.connection.close()
+                
+            }
+        })
+        if(!author){
+            return message.reply('You are not linked!');
         } else {
             const username = args[0];
+            const username = await getUsername(playerID)
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
