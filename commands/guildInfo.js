@@ -54,7 +54,7 @@ module.exports = {
     async execute(message, args){
         let author;
         let playerID;
-        let username;
+        
         await mongo().then(async (mongoose) => {
             try{
                 author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
@@ -69,6 +69,7 @@ module.exports = {
             }
         })
         async function setUsername(){
+            let username;
             if(args[0]){
                 username = args[0];
                 return username;
@@ -79,8 +80,8 @@ module.exports = {
                 return username;
             }
         }
-        setUsername();
-        if(username){
+        let playerName = await setUsername();
+        if(playerName){
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
