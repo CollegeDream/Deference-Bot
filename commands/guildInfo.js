@@ -68,13 +68,14 @@ module.exports = {
             }
         })
         let username;
-        if(!author && args[0]){
+        if(args[0]){
             username = args[0];
-        } else if (!author){
+        } else if (!author && !args[0]){
             return message.reply('You are not linked!');
         } else {
-            //const username = args[0];
             username = await getUsername(playerID)
+            return username
+        }
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
@@ -146,7 +147,7 @@ module.exports = {
             guild_Embed.setDescription(expArray.reverse().join('\n'))
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
-        }
+        
     },  
 }
 process.on("unhandledRejection", (err) => {
