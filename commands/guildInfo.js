@@ -58,7 +58,7 @@ module.exports = {
         await mongo().then(async (mongoose) => {
             try{
                 author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
-                    console.log(err);
+                    //console.log(err);
                 })
                 if(author){
                     playerID = author.uuid;
