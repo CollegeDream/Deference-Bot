@@ -13,7 +13,7 @@ function getUUID(username) {
 }
 
 module.exports = {
-    name: 'save',
+    name: 'register',
     description: 'to save a player\' uuid into db',
     async execute(message, args){
         let playerUUID;
