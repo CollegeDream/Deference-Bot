@@ -67,11 +67,14 @@ module.exports = {
                 
             }
         })
-        if(!author){
+        let username;
+        if(!author && args[0]){
+            username = args[0];
+        } else if (!author){
             return message.reply('You are not linked!');
         } else {
             //const username = args[0];
-            const username = await getUsername(playerID)
+            username = await getUsername(playerID)
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
