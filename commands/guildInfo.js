@@ -68,7 +68,7 @@ module.exports = {
                 
             }
         })
-        function setUsername(){
+        async function setUsername(){
             if(args[0]){
                 username = args[0];
                 return username;
