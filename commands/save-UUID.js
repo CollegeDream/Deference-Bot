@@ -16,7 +16,8 @@ module.exports = {
     name: 'save',
     description: 'to save a player\' uuid into db',
     async execute(message, args){
-        playerUUID = await getUUID(args[0]).catch(err=>console.log(err))
+        if(args[0]){
+        let playerUUID = await getUUID(args[0]).catch(err=>console.log(err))
         if(playerUUID){
         await mongo().then(async (mongoose) => {
             try{
