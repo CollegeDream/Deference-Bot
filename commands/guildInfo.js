@@ -54,6 +54,7 @@ module.exports = {
     async execute(message, args){
         let author;
         let playerID;
+        let username;
         await mongo().then(async (mongoose) => {
             try{
                 author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
@@ -67,14 +68,18 @@ module.exports = {
                 
             }
         })
-        let username;
-        if(args[0]){
-            username = args[0];
-        } else if (!author && !args[0]){
-            return message.reply('You are not linked!');
-        } else {
-            username = await getUsername(playerID)
+        function setUsername(){
+            if(args[0]){
+                username = args[0];
+                return username;
+            } else if (!author && !args[0]){
+                return message.reply('You are not linked!');
+            } else {
+                username = await getUsername(playerID)
+                return username;
+            }
         }
+        if(username){
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
@@ -146,7 +151,7 @@ module.exports = {
             guild_Embed.setDescription(expArray.reverse().join('\n'))
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
-        
+        }
     },  
 }
 process.on("unhandledRejection", (err) => {
