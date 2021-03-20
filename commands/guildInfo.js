@@ -70,7 +70,7 @@ module.exports = {
         if(!author){
             return message.reply('You are not linked!');
         } else {
-            const username = args[0];
+            //const username = args[0];
             const username = await getUsername(playerID)
             const playerUUID = await getUUID(username).catch(e=>console.log(e));
             const player = await getPlayer(username).catch(e=>console.log(e));
