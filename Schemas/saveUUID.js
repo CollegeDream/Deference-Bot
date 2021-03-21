@@ -8,6 +8,7 @@ const reqString = {
 const saveUUID = mongoose.Schema({
     _id: reqString,
     uuid: reqString,
+    ign: reqString,
 })
 
 module.exports = mongoose.model('savePlayerID', saveUUID)
