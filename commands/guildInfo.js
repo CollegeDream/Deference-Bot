@@ -121,7 +121,7 @@ module.exports = {
                     guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guildNameURL})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
-                    guild_Embed.addField('Guild level', `\*\*${guildLevel}\*\*`, true)
+                    guild_Embed.addField('Guild level', `${guildLevel}`, true)
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                         dateArray.push(x);
