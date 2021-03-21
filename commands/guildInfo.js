@@ -47,13 +47,6 @@ return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 }).catch(e=>console.log(e));
 }
 
-async function guildInfoSloth(username){
-return fetch(`https://api.slothpixel.me/api/guilds/${username}`)
-.then(result => result.json())
-.then(({level}) => {
-    return level
-}).catch(e=>console.log(e));
-}
 
 
 module.exports = {
@@ -121,7 +114,6 @@ module.exports = {
                     guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guildNameURL})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
-                    guild_Embed.addField('Guild level', `${guildLevel}`, true)
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                         dateArray.push(x);
