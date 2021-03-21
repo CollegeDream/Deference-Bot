@@ -55,7 +55,6 @@ module.exports = {
     async execute(message, args){
         let author;
         let playerID;
-        message.channel.startTyping();
         await mongo().then(async (mongoose) => {
             try{
                 author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
@@ -85,8 +84,45 @@ module.exports = {
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            //console.log('hey')
-            //await getExpHistory(username); 
+            let exp = guild.exp
+
+            const EXP_NEEDED = [100000, 150000, 250000, 500000, 750000, 1000000, 1250000, 1500000, 2000000, 2500000, 2500000, 2500000, 2500000, 2500000, 3000000];
+            // A list of amount of XP required for leveling up in each of the beginning levels (1-15).
+
+            function getLevel(exp) {
+            let level = 0;
+
+            for (let i = 0; i <= 1000; i += 1) {
+            // Increment by one from zero to the level cap.
+                let need = 0;
+                if (i >= EXP_NEEDED.length) {
+                need = EXP_NEEDED[EXP_NEEDED.length - 1];
+                } else {
+                need = EXP_NEEDED[i];
+                }
+                // Determine the current amount of XP required to level up,
+                // in regards to the "i" variable.
+
+                if ((exp - need) < 0) {
+                return Math.round((level + (exp / need)) * 100) / 100;
+                }
+                // If the remaining exp < the total amount of XP required for the next level,
+                // return their level using this formula.
+
+                level += 1;
+                exp -= need;
+                // Otherwise, increase their level by one,
+                // and subtract the required amount of XP to level up,
+                // from the total amount of XP that the guild had.
+            }
+            
+            return 1000;
+            // This should never happen...
+            }
+            
+
+
+
             let expTotal = 0;
             var expArray = new Array();
             var expArray_2 = new Array();
@@ -113,6 +149,7 @@ module.exports = {
                     guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guildNameURL})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
+                    guild_Embed.addField('Guild Level', `${getLevel(exp)}`, true)
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                         dateArray.push(x);
@@ -163,7 +200,6 @@ module.exports = {
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
             }
-            message.channel.stopTyping();
         }
         setUsername();
     },  
