@@ -85,7 +85,6 @@ module.exports = {
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
-            const guildLevel = await guildInfoSloth(username).catch(e=>console.log(e));
             //console.log('hey')
             //await getExpHistory(username); 
             let expTotal = 0;
