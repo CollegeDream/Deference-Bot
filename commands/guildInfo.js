@@ -1,6 +1,7 @@
 const config = require("../config.json")
 const fetch = require("node-fetch")
 const fs = require("fs");
+const Discord = require('discord.js');
 const QuickChart = require('quickchart-js');
 const saveUUID = require('../Schemas/saveUUID')
 const mongo = require('../mongo')
@@ -46,7 +47,13 @@ return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 }).catch(e=>console.log(e));
 }
 
-const Discord = require('discord.js');
+async function guildInfoSloth(username){
+return fetch(`https://api.slothpixel.me/api/guilds/${username}`)
+.then(result => result.json())
+.then(({level}) => {
+    return level
+}).catch(e=>console.log(e));
+}
 
 
 module.exports = {
@@ -55,7 +62,7 @@ module.exports = {
     async execute(message, args){
         let author;
         let playerID;
-        
+        message.channel.startTyping();
         await mongo().then(async (mongoose) => {
             try{
                 author = await saveUUID.findOne({_id: message.author.id}, (err)=>{
@@ -85,6 +92,7 @@ module.exports = {
             const player = await getPlayer(username).catch(e=>console.log(e));
             const guildID = await getGuild(username);
             const guild = await guildInfo(guildID).catch(e=>null);
+            const guildLevel = await guildInfoSloth(username).catch(e=>console.log(e));
             //console.log('hey')
             //await getExpHistory(username); 
             let expTotal = 0;
@@ -113,6 +121,7 @@ module.exports = {
                     guild_Embed.addField(`Guild`, `**[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guildNameURL})**`, true)
                     guild_Embed.addField('Rank', `${guildMember.rank}`, true)
                     guild_Embed.addField('Member', `${guild.members.length}/125`, true)
+                    guild_Embed.addField('Guild level', `\*\*${guildLevel}\*\*`, true)
                     for(x in guildMember.expHistory){
                         expArray.push(`${x}: \*\*${guildMember.expHistory[x]}\*\*`);
                         dateArray.push(x);
@@ -140,7 +149,17 @@ module.exports = {
                           options: {
                             scales: {
                               xAxes: [{
-                                offset: false
+                                offset: false,
+                                scaleLabel : {
+                                    display: true,
+                                    labelString: 'DATE'
+                                }
+                              }],
+                              yAxes: [{
+                                  scaleLabel: {
+                                      display: true,
+                                      labelString: 'GEXP'
+                                  }
                               }]
                             }
                           }
@@ -149,10 +168,11 @@ module.exports = {
             }
             
             guild_Embed.setImage(myChart.getUrl());
-            guild_Embed.setDescription(expArray.reverse().join('\n'))
+            guild_Embed.addField('GEXP', expArray.join('\n'), false)
             guild_Embed.addField(`Total GEXP for the week: ${expTotal}`, '\u200B', false)
             message.channel.send(guild_Embed);
             }
+            message.channel.stopTyping();
         }
         setUsername();
     },  
