@@ -68,7 +68,7 @@ module.exports = {
                 }
             } finally {
                 mongoose.connection.close()
-                
+                setUsername();
             }
         })
         async function setUsername(){
@@ -202,7 +202,6 @@ module.exports = {
             message.channel.send(guild_Embed);
             }
         }
-        setUsername();
     },  
 }
 process.on("unhandledRejection", (err) => {
