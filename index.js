@@ -53,8 +53,7 @@ client.on("message", async message => {
   //if(message.author.bot) return;
   
 
-  if(!message.guild || message.guild.id !== config.targetGuild) return;
-    //const args = message.content.slice(config.prefix.length).split(/ +/g)
+  //if(!message.guild || message.guild.id !== config.targetGuild) return;
     const args = message.content.slice(config.prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
     if(!message.content.startsWith(config.prefix)) return;
