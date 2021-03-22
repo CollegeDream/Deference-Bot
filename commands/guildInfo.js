@@ -75,7 +75,7 @@ module.exports = {
             if(args[0]){
                 username = args[0];
             } else if (!author && !args[0]){
-                return message.reply('You are not linked!');
+                return message.reply('You are not linked! Use &register[IGN] first.');
             } else {
                 username = await getUsername(playerID).catch(e=>message.channel.send(e))
             }

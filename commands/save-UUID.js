@@ -50,7 +50,7 @@ module.exports = {
                     if(err){
                         message.channel.send('An error occured updating the database!')
                     }
-                    message.channel.send('Update successful')
+                    message.channel.send('\`Update successful\`')
                 })   
             } finally {
                 mongoose.connection.close()
