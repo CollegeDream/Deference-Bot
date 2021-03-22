@@ -1,7 +1,8 @@
 module.exports = {
     name: 'hug',
     description: 'send the hug message',
-    async execute(message, args){
+    cooldown: 2,
+    async execute(message){
         let replies = ["You are wonderful!", 
         "You are enough!",
         "You are loved!",

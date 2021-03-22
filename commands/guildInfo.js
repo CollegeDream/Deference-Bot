@@ -52,6 +52,7 @@ return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
 module.exports = {
     name: 'g',
     description: 'get the guild of a player',
+    cooldown: 6,
     async execute(message, args){
         let author;
         let playerID;

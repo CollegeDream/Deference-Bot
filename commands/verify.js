@@ -46,6 +46,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'verify',
     description: 'account verification',
+    cooldown: 7,
     async execute(message, args){
         const username = args[0]
         const linkedAccount = await getLinkedDiscord(username)
