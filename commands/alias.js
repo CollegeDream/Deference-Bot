@@ -10,12 +10,12 @@ function getUUID(username) {
     }).catch(e=>null);
 }
 async function getPlayer(username){
-const id = await getUUID(username)
-return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
-.then(result => result.json())
-.then(({player}) => {
-return player
-}).catch(e=>null);
+  const id = await getUUID(username)
+  return fetch(`https://api.hypixel.net/player?uuid=${id}&key=${config.apiKey}`)
+  .then(result => result.json())
+  .then(({player}) => {
+  return player
+  }).catch(e=>null);
 };
 
 module.exports = {
