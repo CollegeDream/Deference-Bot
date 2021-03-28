@@ -33,7 +33,7 @@ module.exports = {
         const {Bedwars} = player.stats;
 
         //create an embed object here
-        /*(async function (player){
+        (async function (player){
         const bedwars_stats = new Discord.MessageEmbed()
             .setColor('#e82e20')
             .setAuthor(`Player → ${player.displayname} → Bedwars`)
@@ -55,7 +55,7 @@ module.exports = {
             bedwars_stats.addField('\*\*Winstreak\*\*', Bedwars.winstreak, true)
             bedwars_stats.addField('\*\*Items purchased\*\*', Bedwars.items_purchased_bedwars, true)
             message.channel.send(bedwars_stats);
-        })(player);*/
+        })(player);
         
         async function getBedWarsPrestige(level){
             // eslint-disable-next-line max-len
