@@ -6,7 +6,7 @@ const config = require('../config.json')
 const saveUUID = require('../Schemas/saveUUID')
 const mongo = require('../mongo')
 const { get } = require('mongoose')
-
+const plusColor = require('./plusColor')
 
 
 module.exports = {
@@ -74,15 +74,15 @@ module.exports = {
             return player
         }).catch(e=>null);
         };
-        //useful constants
-
-
+        
         //create an embed object here
         async function getBedwarsStats(player){
             const username = player.displayname;
             const {Bedwars} = player.stats;
+            const plusColor_2 = await plusColor(player.rankPlusColor.replace(/_/g, ""));
             const bedwars_stats = new Discord.MessageEmbed()
-            .setColor('#e82e20')
+            
+            .setColor(`${plusColor_2}`)
             .setAuthor(`Player → ${player.displayname} → Bedwars`, `https://crafatar.com/avatars/${player.uuid}`)
             .setTitle(`(${player.achievements.bedwars_level}★) ${username}`)
             .setURL(`https://plancke.io/hypixel/player/stats/${username}`)
