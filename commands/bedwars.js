@@ -79,9 +79,14 @@ module.exports = {
         async function getBedwarsStats(player){
             const username = player.displayname;
             const {Bedwars} = player.stats;
-            const plusColor_2 = await plusColor(player.rankPlusColor.replace(/_/g, ""));
+            let plusColor_2;
+            if(player.rankPlusColor){
+                plusColor_2 = await plusColor(player.rankPlusColor.replace(/_/g, ""));
+            } else {
+                plusColor_2 = '36393E'
+            }
+          
             const bedwars_stats = new Discord.MessageEmbed()
-            
             .setColor(`${plusColor_2}`)
             .setAuthor(`Player → ${player.displayname} → Bedwars`, `https://crafatar.com/avatars/${player.uuid}`)
             .setTitle(`(${player.achievements.bedwars_level}★) ${username}`)
