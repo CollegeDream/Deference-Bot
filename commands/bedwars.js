@@ -7,6 +7,7 @@ const saveUUID = require('../Schemas/saveUUID')
 const mongo = require('../mongo')
 const { get } = require('mongoose')
 const plusColor = require('./plusColor')
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants')
 
 
 module.exports = {
@@ -120,31 +121,36 @@ module.exports = {
             }
             bedwars_stats.addField('\*\*Kills | Deaths\*\*', kills_deaths_array.join('\n'), true)
             
-            let finals = {
-                'Overall': `${Bedwars.final_kills_bedwars} | ${Bedwars.final_deaths_bedwars}`,
-                'Solo': `${Bedwars.eight_one_final_kills_bedwars} | ${Bedwars.eight_one_final_deaths_bedwars}`,
-                'Double': `${Bedwars.eight_two_final_kills_bedwars} | ${Bedwars.eight_two_final_deaths_bedwars}`,
-                '3v3v3v3': `${Bedwars.four_three_final_kills_bedwars} | ${Bedwars.four_three_final_deaths_bedwars}`,
-                '4v4v4v4': `${Bedwars.four_four_final_kills_bedwars} | ${Bedwars.four_four_final_deaths_bedwars}`,
-            }
-            let final_array = []
-            for(mode in finals){
-                final_array.push(`\*\*${mode}:\*\* ${finals[mode]}`)
-            }
-            bedwars_stats.addField(`\*\*Final K|D\*\*`, final_array.join('\n'), true)
+            let final_kills = [
+                {'Overall': Bedwars.final_kills_bedwars || 0},
+                {'Solo': Bedwars.eight_one_final_kills_bedwars || 0},
+                {'Double': Bedwars.eight_two_final_kills_bedwars || 0},
+                {'3v3v3v3': Bedwars.four_three_final_kills_bedwars || 0},
+                {'4v4v4v4': Bedwars.four_four_final_kills_bedwars ||0},
+            ]
 
-            let fkd_ratios = {
-                'Overall': Bedwars.final_kills_bedwars / Bedwars.final_deaths_bedwars,
-                'Solo': Bedwars.eight_one_final_kills_bedwars / Bedwars.eight_one_final_deaths_bedwars,
-                'Double': Bedwars.eight_two_final_kills_bedwars / Bedwars.eight_two_final_deaths_bedwars,
-                '3v3v3v3': Bedwars.four_three_final_kills_bedwars / Bedwars.four_three_final_deaths_bedwars,
-                '4v4v4v4': Bedwars.four_four_final_kills_bedwars / Bedwars.four_four_final_deaths_bedwars,
+            let final_deaths = [
+                {'Overall': Bedwars.final_deaths_bedwars || 0},
+                {'Solo': Bedwars.eight_one_final_deaths_bedwars || 0},
+                {'Double': Bedwars.eight_two_final_deaths_bedwars || 0},
+                {'3v3v3v3': Bedwars.four_three_final_deaths_bedwars || 0},
+                {'4v4v4v4': Bedwars.four_four_final_deaths_bedwars || 0},
+            ]
+            
+            let final_array = [];
+            let fkdr = [];
+            for(let i = 0; i < final_kills.length; i++){
+                for(let mode in final_kills[i]){
+                    let ratio = ((final_kills[i][mode])/(final_deaths[i][mode])).toFixed(2);
+                    final_array.push(`${mode}: ${final_kills[i][mode]} | ${final_deaths[i][mode]}`)
+                    fkdr.push(`${mode}: ${ratio}`)
+                }
             }
-            let fkdr_array = []
-            for(mode in fkd_ratios){
-                fkdr_array.push(`\*\*${mode}:\*\* ${fkd_ratios[mode].toFixed(2)}`)
-            }
-            bedwars_stats.addField('\*\*FKDR\*\*', fkdr_array.join('\n'), true)
+            
+            bedwars_stats.addField(`\*\*Finals\*\*`, final_array.join('\n'), true)
+            bedwars_stats.addField(`\*\*FKDR\*\*`, fkdr.join('\n'), true)
+
+    
             message.channel.send(bedwars_stats);
         };
         
