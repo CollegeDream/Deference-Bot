@@ -193,7 +193,7 @@ module.exports = {
             
             let beds_broken = Bedwars.beds_broken_bedwars || 0;
             let beds_lost = Bedwars.beds_lost_bedwars || 0;
-            let beds_ratio  = beds_broken / (Bedwars.beds_lost_bedwars || 1).toFixed(2);
+            let beds_ratio  = (beds_broken / (Bedwars.beds_lost_bedwars || 1)).toFixed(2);
 
             bedwars_stats.addField('\*\*Beds B | L\*\*', `${beds_broken} | ${beds_lost}`, true)
             bedwars_stats.addField('\*\*B | L Ratio\*\*', beds_ratio, true)
