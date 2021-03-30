@@ -191,35 +191,12 @@ module.exports = {
             bedwars_stats.addField('\u200B', '\u200B', true)
             
             
-            let beds_broken = [
-                {'Overall': Bedwars.beds_broken_bedwars || 0},
-                {'Solo': Bedwars.eight_one_beds_broken_bedwars || 0},
-                {'Double': Bedwars.eight_two_beds_broken_bedwars || 0},
-                {'3v3v3v3': Bedwars.four_three_beds_broken_bedwars || 0},
-                {'4v4v4v4': Bedwars.four_four_beds_broken_bedwars || 0},
-            ]
+            let beds_broken = Bedwars.beds_broken_bedwars || 0;
+            let beds_lost = Bedwars.beds_lost_bedwars || 0;
+            let beds_ratio  = beds_broken / (Bedwars.beds_lost_bedwars || 1).toFixed(2);
 
-            let beds_lost = [
-                {'Overall': Bedwars.beds_lost_bedwars || 0},
-                {'Solo': Bedwars.eight_one_beds_lost_bedwars || 0},
-                {'Double': Bedwars.eight_two_beds_lost_bedwars || 0},
-                {'3v3v3v3': Bedwars.four_three_beds_lost_bedwars || 0},
-                {'4v4v4v4': Bedwars.four_four_beds_lost_bedwars || 0},
-            ]
-
-            let beds_broken_lost = [];
-            let beds_ratio = [];
-
-            for(let i = 0; i < beds_broken.length; i++){
-                for(let mode in beds_broken[i]){
-                    let ratio = ((beds_broken[i][mode])/(beds_lost[i][mode] || 1)).toFixed(2);
-                    beds_broken_lost.push(`${mode}: ${beds_broken[i][mode]} | ${beds_lost[i][mode]}`)
-                    beds_ratio.push(`${mode}: ${ratio}`)
-                }
-            }
-
-            bedwars_stats.addField('\*\*Beds B | L\*\*', beds_broken_lost.join('\n'), true)
-            bedwars_stats.addField('\*\*B | L Ratio\*\*', beds_ratio.join('\n'), true)
+            bedwars_stats.addField('\*\*Beds B | L\*\*', `${beds_broken} | ${beds_lost}`, true)
+            bedwars_stats.addField('\*\*B | L Ratio\*\*', beds_ratio, true)
             bedwars_stats.addField('\u200B', '\u200B', true)
 
             message.channel.send(bedwars_stats);
