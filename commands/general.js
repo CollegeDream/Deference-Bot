@@ -95,78 +95,26 @@ module.exports = {
                 lastLogoutTime = convertFunc(lastLogout);
             }
 
-            let networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
-            let game_stats = [
-                {
-                    'game': 'Bedwars',
-                    'wins': player.stats.Bedwars.wins_bedwars || 0,
-                    'losses': player.stats.Bedwars.losses_bedwars || 0,
-                    'kills': player.stats.Bedwars.kills_bedwars || 0,
-                },
-                {
-                    'game': 'Skywars',
-                    'wins': player.stats.Skywars.wins || 0,
-                    'losses': player.stats.Skywars.losses || 0,
-                    'kills': player.stats.Skywars.kills || 0,
-                },
-                {
-                    'game': 'Murder Mystery',
-                    'wins': player.stats.MurderMystery.wins || 0,
-                    'losses': player.stats.MurderMystery.losses || 0,
-                    'kills': player.stats.MurderMystery.kills || 0,
-                },
-                {
-                    'game': 'TNT run',
-                    'wins': player.stats.TNTGames.wins || 0,
-                    'losses': player.stats.TNTGames.losses || 0,
-                    'kills':{
-                                'TNTtag': player.stats.TNTGames.kills_tntag,
-                                'pvprun': player.stats.TNTGames.kills_pvprun,
-                                'capture': player.stats.TNTGames.kills_capture,
-                            }
-                }
-            ]
-            let playerInfo = {
-                'Level': networkLevel,
-                'Experience': numberWithCommas(player.networkExp),
-                'AP': numberWithCommas(player.achievementPoints),
-                'dsa': ra
-
+            let playerInfo = await game_stats(player, rebornPlayer);
+            let playerInfoArray = [];
+            for(x in playerInfo){
+                playerInfoArray.push(`${x}: \`${playerInfo[x]}\``)
             }
 
 
             
-            general_stats.addField('\*\*Information\*\*', )
+            general_stats.addField('\*\*Information\*\*', playerInfoArray.join('\n'), true)
             calculateOfflineTime(player.lastLogin, player.lastLogout, timeConverter)
             function calculateOfflineTime(lastLogin, lastLogout, convertFunc){
                 lastLoginTime = convertFunc(lastLogin);
                 lastLogoutTime = convertFunc(lastLogout);
             }
 
-            function timeConverter(UNIX_timestamp){
-                
-                const milliseconds = UNIX_timestamp 
 
-                const dateObject = new Date(milliseconds)
-                
-                const humanDateFormat = dateObject.toLocaleString() 
-                
-                dateObject.toLocaleString("en-US", {weekday: "long"}) 
-                dateObject.toLocaleString("en-US", {month: "long"}) 
-                dateObject.toLocaleString("en-US", {day: "numeric"}) 
-                dateObject.toLocaleString("en-US", {year: "numeric"})
-                dateObject.toLocaleString("en-US", {hour: "numeric"}) 
-                dateObject.toLocaleString("en-US", {minute: "numeric"})
-                dateObject.toLocaleString("en-US", {second: "numeric"}) 
-                dateObject.toLocaleString("en-US", {timeZoneName: "short"}) 
-                return humanDateFormat;
-              }
               
             message.channel.send(general_stats)
 
-            function numberWithCommas(x) {
-                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
+
 
             async function rankColor(){
                 if(player.rankPlusColor){
@@ -176,7 +124,134 @@ module.exports = {
                 }
             }
         }   
+
+        function timeConverter(UNIX_timestamp){
+                
+            const milliseconds = UNIX_timestamp 
+
+            const dateObject = new Date(milliseconds)
+            
+            const humanDateFormat = dateObject.toLocaleString() 
+            
+            dateObject.toLocaleString("en-US", {weekday: "long"}) 
+            dateObject.toLocaleString("en-US", {month: "long"}) 
+            dateObject.toLocaleString("en-US", {day: "numeric"}) 
+            dateObject.toLocaleString("en-US", {year: "numeric"})
+            dateObject.toLocaleString("en-US", {hour: "numeric"}) 
+            dateObject.toLocaleString("en-US", {minute: "numeric"})
+            dateObject.toLocaleString("en-US", {second: "numeric"}) 
+            dateObject.toLocaleString("en-US", {timeZoneName: "short"}) 
+            return humanDateFormat;
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
         
+        async function game_stats(player, rebornPlayer){
+            let game_stats = [
+                {
+                    'game': 'Bedwars',
+                    'coins': player.stats.Bedwars.coins || 0,
+                    'wins': player.stats.Bedwars.wins_bedwars || 0,
+                    'losses': player.stats.Bedwars.losses_bedwars || 0,
+                    'kills': player.stats.Bedwars.kills_bedwars || 0,
+                },
+                {
+                    'game': 'Skywars',
+                    'coins': player.stats.SkyWars.coins || 0,
+                    'wins': player.stats.SkyWars.wins || 0,
+                    'losses': player.stats.SkyWars.losses || 0,
+                    'kills': player.stats.SkyWars.kills || 0,
+                },
+                {
+                    'game': 'Murder Mystery',
+                    'coins': player.stats.MurderMystery.coins || 0,
+                    'wins': player.stats.MurderMystery.wins || 0,
+                    'losses': player.stats.MurderMystery.losses || 0,
+                    'kills': player.stats.MurderMystery.kills || 0,
+                },
+                {
+                    'game': 'TNT run',
+                    'coins': player.stats.TNTGames.coins || 0,
+                    'wins': player.stats.TNTGames.wins || 0,
+                    'losses': player.stats.TNTGames.losses || 0,
+                    'kills': await tnt_run_kills() || 0,
+                },
+                {
+                    'game': 'Duels',
+                    'coins': player.stats.Duels.coins || 0,
+                    'wins': player.stats.Duels.wins || 0,
+                    'losses': player.stats.Duels.losses || 0,
+                    'kills': player.stats.Duels.kills || 0,
+                },
+                {
+                    'game': 'Arcade',
+                    'coins': player.stats.Arcade.coins || 0,
+                    'wins': 0,
+                    'losses': 0,
+                    'kills': 0,
+                }
+            ]
+
+            async function tnt_run_kills(){
+                let kills = {
+                    'TNTtag': player.stats.TNTGames.kills_tntag || 0,
+                    'pvprun': player.stats.TNTGames.kills_pvprun || 0,
+                    'capture': player.stats.TNTGames.kills_capture || 0,
+                }
+                let kills_total = 0;
+                for(mode in kills){
+                    kills_total += kills[mode];
+                }
+                return kills_total;
+            }
+
+            let total_kills = game_stats.reduce((acc, cur) => {
+                return acc + cur.kills;
+            }, 0)
+
+            let total_wins = game_stats.reduce((acc, cur) => {
+                return acc + cur.wins;
+            }, 0)
+
+            let total_coins = game_stats.reduce((acc, cur) => {
+                return acc + cur.coins;
+            }, 0)
+            let networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
+
+            let playerInfo = {
+                'Level': numberWithCommas(networkLevel.toFixed(2)),
+                'Experience': numberWithCommas(player.networkExp),
+                'AP': numberWithCommas(player.achievementPoints),
+                'Total kills': numberWithCommas(total_kills),
+                'Total wins': numberWithCommas(total_wins),
+                'Total coins': numberWithCommas(total_coins),
+            }
+
+            return playerInfo;
+        }
+
+        async function getSocial(player){
+            
+        }
+
+        async function getGuild(username){
+            const id = await getUUID(username);
+            return fetch(`https://api.hypixel.net/findGuild?byUuid=${id}&key=${config.apiKey}`)
+            .then(result => result.json())
+            .then(({guild}) => {
+                return guild
+          }).catch(e=>null);
+        };
+
+        async function guildInfo(guildID){
+            return fetch(`https://api.hypixel.net/guild?key=${config.apiKey}&id=${guildID}`)
+            .then(result => result.json())
+            .then(({guild}) => {
+                return guild
+            }).catch(e=>console.log(e));
+        }
         //const status = await hypixel.getStatus('sonofaplatypus').catch(e => console.error(e));
         //console.log(status.game.game);
         
