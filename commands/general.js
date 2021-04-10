@@ -80,19 +80,14 @@ module.exports = {
             general_stats.setTitle(`[${rank}] ${ign}`)
             general_stats.setURL(`https://plancke.io/hypixel/player/stats/${ign}`)
             general_stats.setColor(await rankColor())
+
             let status_string;
             if(playerStatus.online == true){
                 status_string = '\*\*🟢 Online\*\*'
+                general_stats.addField(status_string, `Game: \`${playerStatus.game.game}\`\nMode: \`${playerStatus.mode || 'NaN'}\`\nMap: \`${playerStatus.map || `NaN`}\``, false)
             } else {
-                status_string = '\*\*🔴 Offline\*\* has been offline for '
-            }
-            let lastLoginTime;
-            let lastLogoutTime;
-
-            calculateOfflineTime(player.lastLogin, player.lastLogout, timeConverter)
-            function calculateOfflineTime(lastLogin, lastLogout, convertFunc){
-                lastLoginTime = convertFunc(lastLogin);
-                lastLogoutTime = convertFunc(lastLogout);
+                status_string = '\*\*🔴 Offline\*\*';
+                general_stats.addField(status_string, '\u200B', false)
             }
 
             let playerInfo = await game_stats(player, rebornPlayer);
@@ -100,30 +95,51 @@ module.exports = {
             for(x in playerInfo){
                 playerInfoArray.push(`${x}: \`${playerInfo[x]}\``)
             }
-
-
-            
             general_stats.addField('\*\*Information\*\*', playerInfoArray.join('\n'), true)
-            calculateOfflineTime(player.lastLogin, player.lastLogout, timeConverter)
-            function calculateOfflineTime(lastLogin, lastLogout, convertFunc){
-                lastLoginTime = convertFunc(lastLogin);
-                lastLogoutTime = convertFunc(lastLogout);
+
+            const guildID = await getGuild(player.displayname);
+            const guild = await guildInfo(guildID);
+            let guild_string;
+            if(guild){
+                const guildNameURL = encodeURIComponent(guild.name.trim());
+                guild_string = `Guild: **[${guild.name} [${guild.tag}]](https://plancke.io/hypixel/guild/name/${guildNameURL})**`; 
+            } else {
+                guild_string = `Guild: \`NaN\``;
             }
-
-
-              
-            message.channel.send(general_stats)
-
-
-
-            async function rankColor(){
-                if(player.rankPlusColor){
-                    return await plusColor(player.rankPlusColor.replace(/_/g, ""));
-                } else {
-                    return '36393E'
+            let playerSocial = await getSocial(player);
+            let socialArray = [];
+            socialArray.push(guild_string);
+            for(x in playerSocial){
+                if(x == 'Guild'){
+                    socialArray.push(`${x}: ${playerSocial[x]}`)
                 }
+                socialArray.push(`${x}: \`${playerSocial[x]}\``)
             }
+            general_stats.addField('\*\*Social\*\*', socialArray.join('\n'), true)
+            
+            let login_status = await loginStatus(player);
+            let login_status_array = [];
+            for(x in login_status){
+                login_status_array.push(`${x}: \`${login_status[x]}\``)
+            }
+            general_stats.addField('\*\*Login Status\*\*', login_status_array.join('\n'), true)
+
+            let aliases = player.knownAliases || ['NaN'];
+            general_stats.addField('\*\*Past Usernames\*\*', `\`${aliases.join(', ')}\``, false)
+
+            general_stats.addField('\*\*Skin\*\*', `[Download Here!](https://namemc.com/profile/${player.displayname})`)
+            general_stats.setImage(`https://crafatar.com/renders/body/${player.uuid}`)
+            general_stats.setFooter(`UUID: ${player.uuid}\nDeveloped by CollegeDream`)
+            message.channel.send(general_stats);
         }   
+
+        async function rankColor(){
+            if(player.rankPlusColor){
+                return await plusColor(player.rankPlusColor.replace(/_/g, ""));
+            } else {
+                return '36393E'
+            }
+        }
 
         function timeConverter(UNIX_timestamp){
                 
@@ -221,9 +237,12 @@ module.exports = {
             let networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
 
             let playerInfo = {
+                'IGN': player.displayname,
+                'Rank': rebornPlayer.rank || 'NaN',
                 'Level': numberWithCommas(networkLevel.toFixed(2)),
                 'Experience': numberWithCommas(player.networkExp),
                 'AP': numberWithCommas(player.achievementPoints),
+                'Karma': numberWithCommas(player.karma) || 0,
                 'Total kills': numberWithCommas(total_kills),
                 'Total wins': numberWithCommas(total_wins),
                 'Total coins': numberWithCommas(total_coins),
@@ -233,7 +252,30 @@ module.exports = {
         }
 
         async function getSocial(player){
-            
+
+            const friends = await hypixel.getFriends(player.displayname).catch(e => console.error(e));
+            let discordAcc;
+            if(player.socialMedia){
+                discordAcc = player.socialMedia.links.DISCORD || 'NaN';
+            } else {
+                discordAcc = 'NaN';
+            }
+            let social = {
+                'Friends': friends.length || 0,
+                'Discord': discordAcc,
+            }
+            return social;
+        }
+
+        async function loginStatus(player){
+
+            let login_status = {
+                'Recent game': `${player.mostRecentGameType}\n` || 'NaN',
+                'First login': `${timeConverter(player.firstLogin)} EST` || 'NaN',
+                'Last login': `${timeConverter(player.lastLogin)} EST` || 'NaN',
+                'Last logout': `${timeConverter(player.lastLogout)} EST` || 'NaN',
+            }
+            return login_status;
         }
 
         async function getGuild(username){
