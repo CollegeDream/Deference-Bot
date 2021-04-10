@@ -183,7 +183,7 @@ module.exports = {
                 {
                     'game': 'Murder Mystery',
                     'coins': 0,
-                    'wins': player.stats.MurderMystery.wins || 0,
+                    'wins': player.stats.MurderMystery.wins?. ()|| 0,
                     'losses': player.stats.MurderMystery.losses || 0,
                     'kills': player.stats.MurderMystery.kills || 0,
                 },
