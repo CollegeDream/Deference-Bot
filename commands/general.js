@@ -182,10 +182,10 @@ module.exports = {
                 },
                 {
                     'game': 'Murder Mystery',
-                    'coins': 0,
+                    'coins': player.stats.MurderMystery?.coins ?? 0,
                     'wins': player.stats.MurderMystery?.wins ?? 0,
-                    'losses': player.stats.MurderMystery.losses || 0,
-                    'kills': player.stats.MurderMystery.kills || 0,
+                    'losses': player.stats.MurderMystery?.losses ?? 0,
+                    'kills': player.stats.MurderMystery?.kills ?? 0,
                 },
                 {
                     'game': 'TNT run',
@@ -209,12 +209,6 @@ module.exports = {
                     'kills': 0,
                 }
             ]
-            let MurderMystery = game_stats.find(game=>game.game === "Murder Mystery")
-            if(player.stats.MurderMystery.coins == undefined){
-                MurderMystery.coins = 0;
-            } else {
-                MurderMystery.coins = player.stats.MurderMystery.coins;
-            }
 
             async function tnt_run_kills(){
                 let kills = {
