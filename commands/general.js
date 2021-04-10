@@ -182,7 +182,7 @@ module.exports = {
                 },
                 {
                     'game': 'Murder Mystery',
-                    'coins': player.stats.MurderMystery.coins || 0,
+                    'coins': player.stats.MurderMystery.coins ? player.stats.MurderMystery.coins : 0,
                     'wins': player.stats.MurderMystery.wins || 0,
                     'losses': player.stats.MurderMystery.losses || 0,
                     'kills': player.stats.MurderMystery.kills || 0,
@@ -294,8 +294,7 @@ module.exports = {
                 return guild
             }).catch(e=>console.log(e));
         }
-        //const status = await hypixel.getStatus('sonofaplatypus').catch(e => console.error(e));
-        //console.log(status.game.game);
+
         
     }
     
