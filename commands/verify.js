@@ -143,8 +143,6 @@ module.exports = {
               var networkLevel = (Math.sqrt(player.networkExp + 15312.5) - 125/Math.sqrt(2))/(25*Math.sqrt(2));
               embed_verified.addField('Member of Deference', `Given <@&686070737194450995> role`, false)
               message.channel.send(embed_verified)
-              message.channel.send(`Display Name: ${player.displayname} (these are for testing)`)
-              message.channel.send(`Network level: ${networkLevel.toFixed(2)}`)
               message.member.roles.add(config.memberRole).catch(e=>{
                 console.log(e)
                 message.reply(`An error occured: \n\`${e}\``)
